@@ -3,14 +3,21 @@ project(QBankerSystem LANGUAGES CXX)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/form)
+
 qt_standard_project_setup()
+
+include_directories(include)
 
 qt_add_executable(QBankerSystem
     WIN32 MACOSX_BUNDLE
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    src/main.cpp
+    src/mainwindow.cpp
+    include/mainwindow.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/mainwindow.ui
 )
 
 target_link_libraries(QBankerSystem
