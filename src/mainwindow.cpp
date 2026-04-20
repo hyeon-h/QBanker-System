@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("QBankerSystem");
+    userWin = new UserMainWindow(this);
+    adminWin = new AdminMainWindow(this);
 }
 
 MainWindow::~MainWindow()
@@ -19,8 +21,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     qDebug()<<"USER LOGIN OK";
-    UserMainWindow* userWin = new UserMainWindow();
-    userWin->setAttribute(Qt::WA_DeleteOnClose);
     userWin->show();
     this->hide();
 }
@@ -28,8 +28,6 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     qDebug()<<"ADMIN LOGIN OK";
-    AdminMainWindow* adminWin = new AdminMainWindow();
-    adminWin->setAttribute(Qt::WA_DeleteOnClose);
     adminWin->show();
     this->hide();
 }
