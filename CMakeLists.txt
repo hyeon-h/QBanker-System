@@ -16,8 +16,14 @@ qt_add_executable(QBankerSystem
     WIN32 MACOSX_BUNDLE
     src/main.cpp
     src/mainwindow.cpp
+    src/usermainwindow.cpp
+    src/adminmainwindow.cpp
     include/mainwindow.h
+    include/usermainwindow.h
+    include/adminmainwindow.h
     ${CMAKE_CURRENT_SOURCE_DIR}/form/mainwindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/usermainwindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/adminmainwindow.ui
 )
 
 target_link_libraries(QBankerSystem
