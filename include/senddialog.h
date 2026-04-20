@@ -2,6 +2,7 @@
 #define SENDDIALOG_H
 
 #include <QDialog>
+#include <QCloseEvent>
 
 namespace Ui {
 class SendDialog;
@@ -15,7 +16,13 @@ public:
     explicit SendDialog(QWidget *parent = nullptr);
     ~SendDialog();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
+    void closeEvent(QCloseEvent *event) override;
     Ui::SendDialog *ui;
 };
 

@@ -2,6 +2,7 @@
 #define MEMINFODIALOG_H
 
 #include <QDialog>
+#include <QCloseEvent>
 
 namespace Ui {
 class MemInfoDialog;
@@ -15,7 +16,13 @@ public:
     explicit MemInfoDialog(QWidget *parent = nullptr);
     ~MemInfoDialog();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
+    void closeEvent(QCloseEvent *event) override;
     Ui::MemInfoDialog *ui;
 };
 

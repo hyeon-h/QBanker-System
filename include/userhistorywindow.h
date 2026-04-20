@@ -2,6 +2,7 @@
 #define USERHISTORYWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 
 namespace Ui {
 class UserHistoryWindow;
@@ -15,6 +16,13 @@ public:
     explicit UserHistoryWindow(QWidget *parent = nullptr);
     ~UserHistoryWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 private:
     Ui::UserHistoryWindow *ui;
 };

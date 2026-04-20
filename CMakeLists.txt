@@ -18,16 +18,24 @@ qt_add_executable(QBankerSystem
     src/mainwindow.cpp
     src/userwindow.cpp
     src/adminwindow.cpp
+    src/senddialog.cpp
+    src/meminfodialog.cpp
+    src/userhistorywindow.cpp
+    src/adminhistorywindow.cpp
     include/mainwindow.h
     include/userwindow.h
     include/adminwindow.h
+    include/senddialog.h
+    include/meminfodialog.h
+    include/userhistorywindow.h
+    include/adminhistorywindow.h
     ${CMAKE_CURRENT_SOURCE_DIR}/form/mainwindow.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/form/userwindow.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/form/adminwindow.ui
-    senddialog.h senddialog.cpp senddialog.ui
-    userhistorywindow.h userhistorywindow.cpp userhistorywindow.ui
-    meminfodialog.h meminfodialog.cpp meminfodialog.ui
-    adminhistorywindow.h adminhistorywindow.cpp adminhistorywindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/senddialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/meminfodialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/userhistorywindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/form/adminhistorywindow.ui
 )
 
 target_link_libraries(QBankerSystem

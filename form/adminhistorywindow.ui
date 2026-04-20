@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>UserHistoryWindow</class>
- <widget class="QMainWindow" name="UserHistoryWindow">
+ <class>AdminHistoryWindow</class>
+ <widget class="QMainWindow" name="AdminHistoryWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -167,10 +167,18 @@
        </widget>
       </item>
       <item row="3" column="2">
-       <widget class="QDateEdit" name="dateEdit"/>
+       <widget class="QDateEdit" name="dateEdit">
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="3" column="4">
-       <widget class="QDateEdit" name="dateEdit_2"/>
+       <widget class="QDateEdit" name="dateEdit_2">
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="12" column="3" colspan="2">
        <widget class="QPushButton" name="pushButton_2">

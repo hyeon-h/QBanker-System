@@ -2,6 +2,8 @@
 #define ADMINWINDOW_H
 
 #include <QMainWindow>
+#include "adminhistorywindow.h"
+#include "meminfodialog.h"
 
 namespace Ui {
 class AdminWindow;
@@ -21,6 +23,8 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
+    AdminHistoryWindow* adminHistoryWindow;
+    MemInfoDialog* memInfoDialog;
     Ui::AdminWindow *ui;
 };
 

@@ -2,6 +2,7 @@
 #define ADMINHISTORYWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 
 namespace Ui {
 class AdminHistoryWindow;
@@ -14,6 +15,14 @@ class AdminHistoryWindow : public QMainWindow
 public:
     explicit AdminHistoryWindow(QWidget *parent = nullptr);
     ~AdminHistoryWindow();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     Ui::AdminHistoryWindow *ui;

@@ -2,6 +2,8 @@
 #define USERWINDOW_H
 
 #include <QMainWindow>
+#include "senddialog.h"
+#include "userhistorywindow.h"
 
 namespace Ui {
 class UserWindow;
@@ -23,6 +25,8 @@ private slots:
     void on_pushButton_3_clicked();
 
 private:
+    SendDialog* sendDialog;
+    UserHistoryWindow* userHistoryWindow;
     Ui::UserWindow *ui;
 };
 
