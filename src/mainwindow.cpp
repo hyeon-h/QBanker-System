@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "usermainwindow.h"
-#include "adminmainwindow.h"
+#include "userwindow.h"
+#include "adminwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("QBankerSystem");
-    userWin = new UserMainWindow(this);
-    adminWin = new AdminMainWindow(this);
+    userWin = new UserWindow(this);
+    adminWin = new AdminWindow(this);
 }
 
 MainWindow::~MainWindow()

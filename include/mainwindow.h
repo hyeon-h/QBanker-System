@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "usermainwindow.h"
-#include "adminmainwindow.h"
+#include "userwindow.h"
+#include "adminwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,8 +27,8 @@ private slots:
     void on_pushButton_3_clicked();
 
 private:
-    UserMainWindow* userWin;
-    AdminMainWindow* adminWin;
+    UserWindow* userWin;
+    AdminWindow* adminWin;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
