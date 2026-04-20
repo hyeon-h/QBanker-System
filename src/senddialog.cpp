@@ -16,9 +16,23 @@ SendDialog::~SendDialog()
 void SendDialog::on_pushButton_clicked()
 {
     qDebug()<<"send";
-    this->close();
+    if(ui->lineEdit->text() == "")
+    {
+        ui->label_5->setText("목적지가 유효하지 않습니다.");
+    }
+    else if(ui->lineEdit_2->text().toInt() == 0)
+    {
+        ui->label_5->setText("금액이 유효하지 않습니다");
+    }
+
 }
 
+void SendDialog::clearInputs()
+{
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    ui->label_5->clear();
+}
 
 void SendDialog::on_pushButton_2_clicked()
 {

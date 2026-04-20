@@ -15,6 +15,7 @@ class SendDialog : public QDialog
 public:
     explicit SendDialog(QWidget *parent = nullptr);
     ~SendDialog();
+    void clearInputs();
 
 private slots:
     void on_pushButton_clicked();
