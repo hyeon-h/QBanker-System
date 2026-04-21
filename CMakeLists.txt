@@ -51,6 +51,7 @@ qt_add_executable(QBankerSystem
     form/signup.ui
     include/datamanager.h
     include/history.h
+    src/datamanager.cpp
 
 )
 

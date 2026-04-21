@@ -5,7 +5,8 @@
 
 enum class ActionType {
     Transfer,
-    CreateAccount
+    CreateAccount,
+    Delete
 };
 
 struct History
@@ -14,7 +15,7 @@ struct History
     QString from; // 송신자 or 가입자
     QString to; // 수신자
     ActionType action;
-    qint64 amount;
+    int amount;
 
 };
 

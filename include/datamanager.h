@@ -1,8 +1,9 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
 
-#include <QVector>
 #include "history.h"
+#include <QVector>
+#include <QString>
 
 class DataManager
 {
@@ -14,12 +15,15 @@ public:
     }
     QVector<History> hists;
     QString loginId;
+    QString path;
 
+    void addHistory(const History& h);
     void loadJson();
     void saveJson();
 
 private:
-    DataManager(){}
+    DataManager();
+    
 };
 
 #endif // DATAMANAGER_H

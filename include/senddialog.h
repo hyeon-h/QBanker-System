@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QCloseEvent>
+#include <QTimer>
+
+#include "history.h"
+#include "datamanager.h"
 
 namespace Ui {
 class SendDialog;
