@@ -8,6 +8,7 @@ UserWindow::UserWindow(QWidget *parent)
     , ui(new Ui::UserWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("UserLogin");
     sendDialog = new SendDialog(this);
     userHistoryWindow = new UserHistoryWindow(this);
 }

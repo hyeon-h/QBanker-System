@@ -6,6 +6,7 @@ SendDialog::SendDialog(QWidget *parent)
     , ui(new Ui::SendDialog)
 {
     ui->setupUi(this);
+    setWindowTitle("Send");
 }
 
 SendDialog::~SendDialog()

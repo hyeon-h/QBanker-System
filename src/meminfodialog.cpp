@@ -6,6 +6,7 @@ MemInfoDialog::MemInfoDialog(QWidget *parent)
     , ui(new Ui::MemInfoDialog)
 {
     ui->setupUi(this);
+    setWindowTitle("MemInfo");
 }
 
 MemInfoDialog::~MemInfoDialog()

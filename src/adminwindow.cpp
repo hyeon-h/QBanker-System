@@ -6,6 +6,7 @@ AdminWindow::AdminWindow(QWidget *parent)
     , ui(new Ui::AdminWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("AdminLogin");
     adminHistoryWindow = new AdminHistoryWindow(this);
     memInfoDialog = new MemInfoDialog(this);
 }
