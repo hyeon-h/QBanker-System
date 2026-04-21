@@ -7,7 +7,8 @@
 #include <QDomNodeList>
 #include <QDatetime>
 #include <QTimer>
-
+#include "history.h"
+#include "datamanager.h"
 
 Signup::Signup(QWidget *parent) :
     QDialog(parent),
@@ -107,6 +108,18 @@ void Signup::saveToXml(QString id, QString pw, int deposit) {
         stream << doc.toString(4);
 
         file.close();
+
+        History h;
+        h.dateTime = QDateTime::currentDateTime();
+        h.from = id;               // 가입자 ID
+        h.to = "";                 // 가입은 수신자 없음
+        h.action = ActionType::CreateAccount;
+        h.amount = deposit;        // 초기 입금액
+
+        // DataManager의 리스트에 추가하고 JSON으로 저장
+        DataManager::instance().hists.append(h);
+        DataManager::instance().saveJson();
+
         ui->lineEdit->setText("회원가입 완료: [" + id + "]님 환영합니다.");
         QTimer::singleShot(2000, this, &Signup::accept);
     }

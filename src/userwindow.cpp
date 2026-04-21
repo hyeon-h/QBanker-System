@@ -3,6 +3,8 @@
 #include "senddialog.h"
 #include "userhistorywindow.h"
 #include <QMessageBox>
+#include "history.h"
+#include "datamanager.h"
 
 UserWindow::UserWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -46,7 +48,16 @@ void UserWindow::on_pushButton_3_clicked()
 
     if(reply == QMessageBox::Yes)
     {
-        // 탈퇴 처리
+        History h;
+        h.dateTime = QDateTime::currentDateTime();
+        h.from = DataManager::instance().loginId;
+        h.to = "";
+        h.action = ActionType::Delete;
+        h.amount = 0;
+        // DataManager의 리스트에 추가하고 JSON으로 저장
+        DataManager::instance().hists.append(h);
+        DataManager::instance().saveJson();
+        this->close();
     }
 }
 
