@@ -34,11 +34,4 @@
         <Balance>0</Balance>
         <IsActive>true</IsActive>
     </User>
-    <User>
-        <Name>정찬범</Name>
-        <JoinDate>2026-04-21 17:12:29</JoinDate>
-        <Password>1234</Password>
-        <Balance>79969800</Balance>
-        <IsActive>true</IsActive>
-    </User>
 </Users>
