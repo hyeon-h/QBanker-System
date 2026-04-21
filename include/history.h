@@ -19,4 +19,18 @@ struct History
 
 };
 
+struct SearchCriteria {
+    bool useDate;
+    QDate start;
+    QDate end;
+
+    bool useAmount;
+    int minAmount;
+    int maxAmount;
+
+    bool useUser;
+    QString userName;
+    int typeIndex; // 0: 전체, 1: 송신, 2: 수신
+};
+
 #endif // HISTORY_H

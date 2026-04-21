@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include "history.h"
 
 namespace Ui {
 class UserHistoryWindow;

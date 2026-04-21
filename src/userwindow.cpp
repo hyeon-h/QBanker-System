@@ -3,6 +3,7 @@
 #include "senddialog.h"
 #include "userhistorywindow.h"
 #include <QMessageBox>
+
 UserWindow::UserWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UserWindow)

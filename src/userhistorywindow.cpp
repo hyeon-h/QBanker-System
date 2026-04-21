@@ -1,5 +1,6 @@
 #include "userhistorywindow.h"
 #include "ui_userhistorywindow.h"
+#include "datamanager.h"
 
 UserHistoryWindow::UserHistoryWindow(QWidget *parent)
     : QMainWindow(parent)

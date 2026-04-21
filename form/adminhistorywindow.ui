@@ -110,9 +110,6 @@
       <item row="9" column="2">
        <widget class="QLineEdit" name="lineEdit"/>
       </item>
-      <item row="7" column="2">
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
       <item row="7" column="0" colspan="2">
        <widget class="QLabel" name="label_7">
         <property name="text">
@@ -168,9 +165,6 @@
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-      </item>
-      <item row="7" column="4" colspan="2">
-       <widget class="QLineEdit" name="lineEdit_4"/>
       </item>
       <item row="3" column="4" colspan="2">
        <widget class="QDateEdit" name="dateEdit_2">
@@ -242,6 +236,12 @@
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QSpinBox" name="spinBox"/>
+      </item>
+      <item row="7" column="4" colspan="2">
+       <widget class="QSpinBox" name="spinBox_2"/>
       </item>
      </layout>
     </item>
