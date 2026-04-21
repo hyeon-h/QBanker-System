@@ -35,7 +35,7 @@ void MainWindow::on_pushButton_clicked() {
 }
 
 void MainWindow::on_pushButton_2_clicked() {
-    QString inputId = ui->lineEdit->text().trimmed();  // 공백 제거
+    QString inputId = ui->lineEdit->text().trimmed();
     QString inputPw = ui->lineEdit_2->text();
     bool loginSuccess = false;
 
@@ -53,7 +53,6 @@ void MainWindow::on_pushButton_2_clicked() {
         }
     }
 
-    // 2. 일반 유저 로그인 모드 (체크박스 해제 시)
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         ui->lineEdit_3->setText("시스템 오류: 데이터베이스를 찾을 수 없습니다.");
@@ -69,18 +68,25 @@ void MainWindow::on_pushButton_2_clicked() {
         QDomElement userElement = users.at(i).toElement();
         QString xmlId = userElement.firstChildElement("Name").text();
         QString xmlPw = userElement.firstChildElement("Password").text();
+        QString xmlActiveStr = userElement.firstChildElement("IsActive").text();
 
-        if (xmlId == inputId && xmlPw == inputPw) {
-            loginSuccess = true;
+        if (xmlId == inputId && xmlPw == inputPw ) {
+            if(xmlActiveStr == "true"){
+                userWin->show();
+                this->hide();
+                loginSuccess = true;
             break;
+            }
+            else {
+                ui->lineEdit_3->setText(inputId + "님, 현재 비활성화중 입니다. 관리자에게 문의하세요!");
+                return;
+            }
         }
     }
 
-    if (loginSuccess) {
-        ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
-        userWin->show();
-        this->hide();
-    } else {
-        ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
+    if (loginSuccess==false)
+    {
+
+         ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
     }
 }

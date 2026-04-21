@@ -41,8 +41,8 @@ AdminWindow::~AdminWindow()
 void AdminWindow::on_pushButton_clicked()
 {
     qDebug()<<"가입자 조회";
-    memInfoDialog->show();
-    this->hide();
+    memInfoDialog->exec();
+    //this->hide();
 }
 
 
@@ -50,5 +50,5 @@ void AdminWindow::on_pushButton_2_clicked()
 {
     qDebug()<<"입출금 내역";
     adminHistoryWindow->show();
-    this->hide();
+    //this->hide();
 }

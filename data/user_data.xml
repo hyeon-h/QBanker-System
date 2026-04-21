@@ -1,19 +1,5 @@
 <Users>
     <User>
-        <Name>123</Name>
-        <JoinDate>2026-04-20 18:28:15</JoinDate>
-        <Password>123</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>asdasd1234</Name>
-        <JoinDate>2026-04-20 18:58:04</JoinDate>
-        <Password>aaaa</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
         <Name>메시</Name>
         <JoinDate>2026-04-20 18:58:23</JoinDate>
         <Password>호날두</Password>
@@ -39,13 +25,6 @@
         <JoinDate>2026-04-21 09:50:23</JoinDate>
         <Password>123</Password>
         <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>123444</Name>
-        <JoinDate>2026-04-21 10:00:53</JoinDate>
-        <Password>111</Password>
-        <Balance>500000</Balance>
         <IsActive>true</IsActive>
     </User>
     <User>
