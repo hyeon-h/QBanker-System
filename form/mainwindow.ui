@@ -14,24 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-<<<<<<< HEAD
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>USER LOGIN OK</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>ADMIN LOGIN OK</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-=======
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -108,20 +90,14 @@
      </item>
     </layout>
    </widget>
->>>>>>> feat/login
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-<<<<<<< HEAD
-     <width>219</width>
-     <height>22</height>
-=======
      <width>800</width>
      <height>26</height>
->>>>>>> feat/login
     </rect>
    </property>
   </widget>

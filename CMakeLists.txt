@@ -15,22 +15,21 @@ include_directories(include)
 
 qt_add_executable(QBankerSystem
     WIN32 MACOSX_BUNDLE
-    
-    # 헤더 파일 경로 (include 폴더 안에 있다면)
-    include/mainwindow.h
-    include/signup.h
     # 아까 사진에서 form 안에 있었음
 
     # 소스 파일 경로
     src/main.cpp
     src/mainwindow.cpp
-<<<<<<< HEAD
     src/userwindow.cpp
     src/adminwindow.cpp
     src/senddialog.cpp
     src/meminfodialog.cpp
     src/userhistorywindow.cpp
     src/adminhistorywindow.cpp
+    src/signup.cpp
+
+    # 헤더 파일 경로 (include 폴더 안에 있다면)
+    include/signup.h
     include/mainwindow.h
     include/userwindow.h
     include/adminwindow.h
@@ -45,14 +44,12 @@ qt_add_executable(QBankerSystem
     ${CMAKE_CURRENT_SOURCE_DIR}/form/meminfodialog.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/form/userhistorywindow.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/form/adminhistorywindow.ui
-=======
-    src/signup.cpp
+    
 
     # UI 파일 경로
     form/mainwindow.ui
     form/signup.ui
 
->>>>>>> feat/login
 )
 
 target_link_libraries(QBankerSystem

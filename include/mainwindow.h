@@ -23,20 +23,11 @@ private slots:
     void on_pushButton_clicked();   // 신규 가입 버튼
     void on_pushButton_2_clicked(); // 로그인 버튼
 
-private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
 private:
-<<<<<<< HEAD
     UserWindow* userWin;
     AdminWindow* adminWin;
-    Ui::MainWindow *ui;
-=======
     Ui::MainWindow *ui; // UI 부품들에 접근하기 위한 포인터
     Signup *signupPage;
->>>>>>> feat/login
 };
 
 #endif // MAINWINDOW_H

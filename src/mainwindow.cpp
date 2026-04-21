@@ -1,27 +1,21 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-<<<<<<< HEAD
 #include "userwindow.h"
 #include "adminwindow.h"
-=======
 #include "signup.h"
 #include <QDomDocument>
 #include <QFile>
 
->>>>>>> feat/login
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
     setWindowTitle("QBankerSystem");
     userWin = new UserWindow(this);
     adminWin = new AdminWindow(this);
-=======
     this->setFixedSize(550, 500);
->>>>>>> feat/login
 }
 
 MainWindow::~MainWindow()
@@ -29,22 +23,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-<<<<<<< HEAD
-void MainWindow::on_pushButton_clicked()
-{
-    qDebug()<<"USER LOGIN OK";
-    userWin->show();
-    this->hide();
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    qDebug()<<"ADMIN LOGIN OK";
-    adminWin->show();
-    this->hide();
-}
-
-=======
 void MainWindow::on_pushButton_clicked() {
 
     signupPage = new Signup(this);
@@ -68,6 +46,8 @@ void MainWindow::on_pushButton_2_clicked() {
         if (inputId == "admin" && inputPw == "1234") {
             ui->lineEdit_3->setText("관리자 모드로 로그인되었습니다.");
             // 관리자 전용 창 열기 로직 추가 가능
+            adminWin->show();
+            this->hide();
             return;
         } else {
             ui->lineEdit_3->setText("에러: 관리자 정보가 일치하지 않습니다.");
@@ -100,8 +80,9 @@ void MainWindow::on_pushButton_2_clicked() {
 
     if (loginSuccess) {
         ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
+        userWin->show();
+        this->hide();
     } else {
         ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
     }
 }
->>>>>>> feat/login
