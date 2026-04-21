@@ -49,6 +49,8 @@ qt_add_executable(QBankerSystem
     # UI 파일 경로
     form/mainwindow.ui
     form/signup.ui
+    include/datamanager.h
+    include/history.h
 
 )
 

@@ -3,10 +3,9 @@
 #include "senddialog.h"
 #include "userhistorywindow.h"
 #include <QMessageBox>
-UserWindow::UserWindow(QWidget *parent , QString id)
+UserWindow::UserWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UserWindow)
-    , loginId(id)
 {
     ui->setupUi(this);
     setWindowTitle("UserLogin");
@@ -20,8 +19,7 @@ UserWindow::~UserWindow()
 void UserWindow::on_pushButton_clicked()
 {
     qDebug()<<"송금";
-    qDebug()<<loginId;
-    sendDialog = new SendDialog(this, loginId);
+    sendDialog = new SendDialog(this);
     sendDialog->setAttribute(Qt::WA_DeleteOnClose);
     sendDialog->clearInputs();
     sendDialog->show();

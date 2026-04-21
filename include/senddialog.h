@@ -13,7 +13,7 @@ class SendDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SendDialog(QWidget *parent = nullptr, QString id ="");
+    explicit SendDialog(QWidget *parent = nullptr);
     ~SendDialog();
     void clearInputs();
 
@@ -24,7 +24,6 @@ private slots:
 
 private:
     void closeEvent(QCloseEvent *event) override;
-    QString loginId;
     Ui::SendDialog *ui;
 };
 

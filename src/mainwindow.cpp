@@ -81,7 +81,7 @@ void MainWindow::on_pushButton_2_clicked() {
     }
 
     if (loginSuccess) {
-        userWin = new UserWindow(this, loginId);
+        userWin = new UserWindow(this);
         ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
         userWin->show();
         this->hide();
@@ -108,11 +108,11 @@ void MainWindow::saveJson()
     hist2.action = ActionType::Transfer;
     hist2.to = "홍길동";
 
-    hists.push_back(hist1); // 2.vector에 추가
-    hists.push_back(hist2);
+    DataManager::instance().hists.push_back(hist1); // 2.vector에 추가
+    DataManager::instance().hists.push_back(hist2);
 
     QJsonArray array; //3. jsonArray에 추가 (여기부터 저장)
-    for(const History& h : std::as_const(hists)) // const User& u : u를 읽기전용으로 받음
+    for(const History& h : std::as_const(DataManager::instance().hists)) // const User& u : u를 읽기전용으로 받음
     {                                            // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
         QJsonObject obj;
         obj["dateTime"] = h.dateTime.toString(Qt::ISODate); //ISO Date 규격으로 변환한 문자열을 저장
@@ -141,7 +141,7 @@ void MainWindow::loadJson()
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
     file.close();
 
-    hists.clear();
+    DataManager::instance().hists.clear();
 
     QJsonArray array = doc.array();
     for(const QJsonValue& v: std::as_const(array))
@@ -153,10 +153,10 @@ void MainWindow::loadJson()
         hist.amount = obj["amount"].toInt();
         hist.action = static_cast<ActionType>(obj["action"].toInt());
         hist.to = obj["to"].toString();
-        hists.push_back(hist);
+        DataManager::instance().hists.push_back(hist);
     }
 
-    for(const History& h : std::as_const(hists))
+    for(const History& h : std::as_const(DataManager::instance().hists))
     {
         qDebug()<<h.dateTime.toString("yyyy-MM-dd HH:mm:ss")<<h.from<< h.amount << static_cast<int>(h.action) << h.to;
     }

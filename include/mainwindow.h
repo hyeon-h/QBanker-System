@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "signup.h"
-
-
+#include "datamanager.h"
+#include "history.h"
 #include <QMainWindow>
 #include <QJsonObject>
 #include <QJsonDocument>
@@ -16,21 +16,6 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
-
-enum class ActionType {
-    Transfer,
-    CreateAccount
-};
-
-struct History
-{
-    QDateTime dateTime;
-    QString from; // 송신자 or 가입자
-    QString to; // 수신자
-    ActionType action;
-    qint64 amount;
-
-};
 
 class MainWindow : public QMainWindow
 {
@@ -51,7 +36,6 @@ private:
     AdminWindow* adminWin;
     Ui::MainWindow *ui; // UI 부품들에 접근하기 위한 포인터
     Signup *signupPage;
-    QVector<History> hists;
     void saveJson();
     void loadJson();
 };

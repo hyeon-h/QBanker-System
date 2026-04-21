@@ -1,10 +1,9 @@
 #include "userhistorywindow.h"
 #include "ui_userhistorywindow.h"
 
-UserHistoryWindow::UserHistoryWindow(QWidget *parent, QString id)
+UserHistoryWindow::UserHistoryWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UserHistoryWindow)
-    , loginId(id)
 {
     ui->setupUi(this);
     setWindowTitle("UserHistory");

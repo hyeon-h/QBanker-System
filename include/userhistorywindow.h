@@ -13,7 +13,7 @@ class UserHistoryWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit UserHistoryWindow(QWidget *parent = nullptr, QString id = "");
+    explicit UserHistoryWindow(QWidget *parent = nullptr);
     ~UserHistoryWindow();
 
 private slots:
@@ -26,7 +26,6 @@ private slots:
 protected:
     void closeEvent(QCloseEvent *event) override;
 private:
-    QString loginId;
     Ui::UserHistoryWindow *ui;
 };
 
