@@ -29,6 +29,7 @@ protected:
 
 private:
     Ui::AdminHistoryWindow *ui;
+    QString getHistoryMessage(const History& h);
     void filterAndDisplay(const SearchCriteria& sc);
     void addTableRow(const History& h);
 };

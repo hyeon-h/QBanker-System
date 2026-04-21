@@ -10,6 +10,15 @@ AdminHistoryWindow::AdminHistoryWindow(QWidget *parent)
     ui->setupUi(this);
     DataManager::instance().loadJson();
     setWindowTitle("AdminHistory");
+
+    ui->tableWidget->setColumnCount(5); // 5개 컬럼 확보
+    ui->tableWidget->setHorizontalHeaderLabels({"날짜", "보낸 사람", "받는 사람", "금액", "설명"});
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents); // 모든 칸을 내용 크기에 맞춤
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);      // 마지막 '설명' 칸만 남은 공간 다 쓰기
+
+    ui->spinBox->setMaximum(999999999);   //스핀박스 한도 해제
+    ui->spinBox_2->setMaximum(999999999);
+
     ui->dateEdit->setDate(QDate(QDate::currentDate().year(),1,1));
     ui->dateEdit_2->setDate(QDate::currentDate());
 }
@@ -40,59 +49,46 @@ void AdminHistoryWindow::closeEvent(QCloseEvent *event)
 void AdminHistoryWindow::on_pushButton_3_clicked()
 {
     SearchCriteria sc;
+    sc.useDate = ui->checkBox->isChecked(); //날짜 조건
+    sc.start = ui->dateEdit->date();
+    sc.end = ui->dateEdit_2->date();
 
-    // [날짜 조건] QDateEdit은 .date()로 바로 QDate를 가져옵니다.
-    sc.useDate = ui->checkBox->isChecked();
-    sc.start = ui->dateEdit->date();   // 시작 날짜
-    sc.end = ui->dateEdit_2->date();    // 종료 날짜
-
-    // [금액 조건]
-    sc.useAmount = ui->checkBox_2->isChecked();
+    sc.useAmount = ui->checkBox_2->isChecked(); // 금액조건
     sc.minAmount = ui->spinBox->value();
     sc.maxAmount = ui->spinBox_2->value();
 
-    // [사용자 조건]
-    sc.useUser = ui->checkBox_3->isChecked();
+    sc.useUser = ui->checkBox_3->isChecked(); //사용자조건
     sc.userName = ui->lineEdit->text().trimmed();
     sc.typeIndex = ui->comboBox->currentIndex();
 
-    // 필터링 함수 실행
     filterAndDisplay(sc);
-
-    qDebug() << "QDate 기반 검색 실행";
 }
 
 void AdminHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
-    ui->tableWidget->setRowCount(0); // 검색 전 테이블 초기화
-
-    // DataManager에서 전체 기록을 가져옴
+    ui->tableWidget->setRowCount(0);
     const auto& allHists = DataManager::instance().hists;
 
     for(const History& h : std::as_const(allHists)) {
-        // 1. 날짜 필터
         if(sc.useDate) {
             if(h.dateTime.date() < sc.start || h.dateTime.date() > sc.end) continue;
         }
 
-        // 2. 금액 필터
         if(sc.useAmount) {
             if(h.amount < sc.minAmount || h.amount > sc.maxAmount) continue;
         }
 
-        // 3. 사용자 및 타입 필터
         if(sc.useUser) {
             bool isMatch = false;
             if(sc.typeIndex == 0) { // 전체
                 if(h.from == sc.userName || h.to == sc.userName) isMatch = true;
-            } else if(sc.typeIndex == 1) { // 보낸 사람만
+            } else if(sc.typeIndex == 1) { // 송신
                 if(h.from == sc.userName) isMatch = true;
-            } else if(sc.typeIndex == 2) { // 받은 사람만
+            } else if(sc.typeIndex == 2) { // 수신
                 if(h.to == sc.userName) isMatch = true;
             }
             if(!isMatch) continue;
         }
 
-        // 검문을 통과한 데이터만 테이블에 추가
         addTableRow(h);
     }
 }
@@ -100,8 +96,23 @@ void AdminHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
 void AdminHistoryWindow::addTableRow(const History& h) {
     int row = ui->tableWidget->rowCount();
     ui->tableWidget->insertRow(row);
+
     ui->tableWidget->setItem(row, 0, new QTableWidgetItem(h.dateTime.toString("yyyy-MM-dd HH:mm:ss")));
     ui->tableWidget->setItem(row, 1, new QTableWidgetItem(h.from));
-    ui->tableWidget->setItem(row, 2, new QTableWidgetItem(h.to));
-    ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(h.amount)));
+    ui->tableWidget->setItem(row, 2, new QTableWidgetItem(h.to.isEmpty() ? "-" : h.to));
+    ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(h.amount) + "원")); // "원" 추가
+    ui->tableWidget->setItem(row, 4, new QTableWidgetItem(getHistoryMessage(h))); // 상세 메시지
+}
+
+QString AdminHistoryWindow::getHistoryMessage(const History& h) {
+    switch (h.action) {
+    case ActionType::Transfer:
+        return QString("[%1]님이 [%2]님에게 %3원을 송금했습니다.").arg(h.from).arg(h.to).arg(h.amount);
+    case ActionType::CreateAccount:
+        return QString("[%1]님이 계좌를 생성했습니다. (초기 입금: %2원)").arg(h.from).arg(h.amount);
+    case ActionType::Delete:
+        return QString("[%1]님의 계좌가 삭제되었습니다.").arg(h.from);
+    default:
+        return "알 수 없는 작업";
+    }
 }
