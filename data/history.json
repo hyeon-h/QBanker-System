@@ -1,0 +1,12 @@
+[
+    {
+        "balance": 50000,
+        "grade": "VIP",
+        "name": "홍길동"
+    },
+    {
+        "balance": 3000,
+        "grade": "일반",
+        "name": "김철수"
+    }
+]

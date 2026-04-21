@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("QBankerSystem");
+    path = qApp->applicationDirPath() + "/../../../QBankerSystem";
+    QDir().mkpath(path+ "/data");
     userWin = new UserWindow(this);
     adminWin = new AdminWindow(this);
     this->setFixedSize(550, 500);
@@ -82,7 +84,72 @@ void MainWindow::on_pushButton_2_clicked() {
         ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
         userWin->show();
         this->hide();
+        // loadJson();
+        saveJson();
     } else {
         ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
     }
+}
+
+void MainWindow::saveJson()
+{
+    User user1;
+    user1.name = "홍길동";
+    user1.balance=50000;
+    user1.grade = "VIP";
+
+    User user2;
+    user2.name = "김철수";
+    user2.balance=3000;
+    user2.grade = "일반";
+
+    users.push_back(user1);
+    users.push_back(user2);
+
+    QJsonArray array;
+    for(const User& u : std::as_const(users)) // const User& u : u를 읽기전용으로 받음
+    {                                         // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
+        QJsonObject obj;
+        obj["name"] = u.name;
+        obj["balance"] = u.balance;
+        obj["grade"] = u.grade;
+        array.append(obj);
+    }
+
+    QJsonDocument doc(array);
+    QString fileName = path + "/data/history.json";
+    QFile file(fileName);
+    if(!file.open(QFile::WriteOnly)) return;
+    file.write(doc.toJson());
+    file.close();
+
+}
+
+void MainWindow::loadJson()
+{
+    QString fileName = path + "/data/history.json";
+    QFile file(fileName);
+    if(!file.open(QFile::ReadOnly)) return;
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    users.clear();
+
+    QJsonArray array = doc.array();
+    for(const QJsonValue& v: std::as_const(array))
+    {
+        QJsonObject obj = v.toObject();
+        User user;
+        user.name = obj["name"].toString();
+        user.balance = obj["balance"].toInt();
+        user.grade  =  obj["grade"].toString();
+        users.push_back(user);
+    }
+
+    for(const User& u : std::as_const(users))
+    {
+        qDebug()<<u.name<<u.balance<<u.grade;
+    }
+
 }

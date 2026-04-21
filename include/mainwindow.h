@@ -4,11 +4,24 @@
 
 
 #include <QMainWindow>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QFile>
+#include <QVector>
 #include "userwindow.h"
 #include "adminwindow.h"
-
+#include <QStandardPaths>
+#include <QDir>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+
+struct User
+{
+    QString name;
+    int balance;
+    QString grade;
+};
 
 class MainWindow : public QMainWindow
 {
@@ -17,7 +30,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    QString path;
 private slots:
     // UI에서 "Go to slot"으로 만든 함수들이 여기에 선언됩니다.
     void on_pushButton_clicked();   // 신규 가입 버튼
@@ -28,6 +41,9 @@ private:
     AdminWindow* adminWin;
     Ui::MainWindow *ui; // UI 부품들에 접근하기 위한 포인터
     Signup *signupPage;
+    QVector<User> users;
+    void saveJson();
+    void loadJson();
 };
 
 #endif // MAINWINDOW_H
