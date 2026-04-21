@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("QBankerSystem");
-    userWin = new UserWindow(this);
-    adminWin = new AdminWindow(this);
     this->setFixedSize(550, 500);
 }
 
@@ -44,6 +42,7 @@ void MainWindow::on_pushButton_2_clicked() {
 
         if (inputId == "admin" && inputPw == "1234") {
             ui->lineEdit_3->setText("관리자 모드로 로그인되었습니다.");
+            adminWin = new AdminWindow(this);
             adminWin->show();
             this->hide();
             return;
@@ -72,6 +71,9 @@ void MainWindow::on_pushButton_2_clicked() {
 
         if (xmlId == inputId && xmlPw == inputPw ) {
             if(xmlActiveStr == "true"){
+                QString xmlBalance = userElement.firstChildElement("Balance").text();
+                userWin = new UserWindow(this);
+                userWin->setUserInfo(xmlId, xmlBalance);
                 userWin->show();
                 this->hide();
                 loginSuccess = true;

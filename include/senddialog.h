@@ -25,6 +25,12 @@ private slots:
 private:
     void closeEvent(QCloseEvent *event) override;
     Ui::SendDialog *ui;
+
+private:
+    QString senderName; // 돈 보내는 사람 이름 저장
+
+public:
+    void setSenderInfo(QString name); // 이름 받아오는 통로
 };
 
 #endif // SENDDIALOG_H

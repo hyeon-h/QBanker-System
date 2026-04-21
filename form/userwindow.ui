@@ -37,7 +37,7 @@
          </font>
         </property>
         <property name="text">
-         <string>황현</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -152,7 +152,7 @@
      <x>0</x>
      <y>0</y>
      <width>237</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
