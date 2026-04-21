@@ -13,14 +13,23 @@
 #include "adminwindow.h"
 #include <QStandardPaths>
 #include <QDir>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 
-struct User
+enum class ActionType {
+    Transfer,
+    CreateAccount
+};
+
+struct History
 {
-    QString name;
-    int balance;
-    QString grade;
+    QDateTime dateTime;
+    QString from; // 송신자 or 가입자
+    QString to; // 수신자
+    ActionType action;
+    qint64 amount;
+
 };
 
 class MainWindow : public QMainWindow
@@ -41,7 +50,7 @@ private:
     AdminWindow* adminWin;
     Ui::MainWindow *ui; // UI 부품들에 접근하기 위한 포인터
     Signup *signupPage;
-    QVector<User> users;
+    QVector<History> hists;
     void saveJson();
     void loadJson();
 };

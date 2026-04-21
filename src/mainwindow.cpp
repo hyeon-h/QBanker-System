@@ -84,8 +84,8 @@ void MainWindow::on_pushButton_2_clicked() {
         ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
         userWin->show();
         this->hide();
-        // loadJson();
-        saveJson();
+        loadJson();
+        //saveJson();
     } else {
         ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
     }
@@ -93,26 +93,32 @@ void MainWindow::on_pushButton_2_clicked() {
 
 void MainWindow::saveJson()
 {
-    User user1;
-    user1.name = "홍길동";
-    user1.balance=50000;
-    user1.grade = "VIP";
+    History hist1;
+    hist1.dateTime = QDateTime(QDate(2026, 4, 21), QTime(15, 30, 0));
+    hist1.from = "홍길동";
+    hist1.amount = 50000;
+    hist1.action = ActionType::Transfer;
+    hist1.to = "김철수";
 
-    User user2;
-    user2.name = "김철수";
-    user2.balance=3000;
-    user2.grade = "일반";
+    History hist2;
+    hist2.dateTime = QDateTime::currentDateTime();
+    hist2.from = "김철수";
+    hist2.amount = 1000;
+    hist2.action = ActionType::Transfer;
+    hist2.to = "홍길동";
 
-    users.push_back(user1);
-    users.push_back(user2);
+    hists.push_back(hist1);
+    hists.push_back(hist2);
 
     QJsonArray array;
-    for(const User& u : std::as_const(users)) // const User& u : u를 읽기전용으로 받음
+    for(const History& h : std::as_const(hists)) // const User& u : u를 읽기전용으로 받음
     {                                         // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
         QJsonObject obj;
-        obj["name"] = u.name;
-        obj["balance"] = u.balance;
-        obj["grade"] = u.grade;
+        obj["dateTime"] = h.dateTime.toString(Qt::ISODate); //ISO Date 규격으로 변환한 문자열을 저장
+        obj["from"] = h.from;
+        obj["amount"] = static_cast<qint64>(h.amount);
+        obj["action"] = static_cast<int>(h.action);
+        obj["to"] = h.to;
         array.append(obj);
     }
 
@@ -134,22 +140,23 @@ void MainWindow::loadJson()
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
     file.close();
 
-    users.clear();
+    hists.clear();
 
     QJsonArray array = doc.array();
     for(const QJsonValue& v: std::as_const(array))
     {
         QJsonObject obj = v.toObject();
-        User user;
-        user.name = obj["name"].toString();
-        user.balance = obj["balance"].toInt();
-        user.grade  =  obj["grade"].toString();
-        users.push_back(user);
+        History hist;
+        hist.dateTime = QDateTime::fromString((obj["dateTime"].toString()), Qt::ISODate);
+        hist.from = obj["from"].toString();
+        hist.amount = obj["amount"].toInt();
+        hist.action = static_cast<ActionType>(obj["action"].toInt());
+        hist.to = obj["to"].toString();
+        hists.push_back(hist);
     }
 
-    for(const User& u : std::as_const(users))
+    for(const History& h : std::as_const(hists))
     {
-        qDebug()<<u.name<<u.balance<<u.grade;
+        qDebug()<<h.dateTime.toString("yyyy-MM-dd HH:mm:ss")<<h.from<< h.amount << static_cast<int>(h.action) << h.to;
     }
-
 }
