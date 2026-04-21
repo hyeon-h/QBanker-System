@@ -31,7 +31,7 @@ void MainWindow::on_pushButton_clicked() {
     signupPage->setAttribute(Qt::WA_DeleteOnClose);
 
 
-    signupPage->show();
+    signupPage->exec();
 }
 
 void MainWindow::on_pushButton_2_clicked() {
@@ -39,13 +39,11 @@ void MainWindow::on_pushButton_2_clicked() {
     QString inputPw = ui->lineEdit_2->text();
     bool loginSuccess = false;
 
-    // 1. 관리자 로그인 모드인지 확인
+
     if (ui->checkBox->isChecked()) {
-        // [관리자 모드] XML을 뒤지지 않고 지정된 값으로 확인 (또는 관리자용 태그 확인)
-        // 수동으로 추가한 admin 계정 정보를 여기서 체크합니다.
+
         if (inputId == "admin" && inputPw == "1234") {
             ui->lineEdit_3->setText("관리자 모드로 로그인되었습니다.");
-            // 관리자 전용 창 열기 로직 추가 가능
             adminWin->show();
             this->hide();
             return;

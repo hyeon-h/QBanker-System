@@ -1,5 +1,7 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
+#include <QFile>
+#include <QDomDocument>
 
 AdminWindow::AdminWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,6 +9,26 @@ AdminWindow::AdminWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("AdminLogin");
+
+
+    QFile file("../../data/user_data.xml");
+    int userCount = 0;
+
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QDomDocument doc;
+        if (doc.setContent(&file)) {
+
+            QDomNodeList users = doc.elementsByTagName("User");
+            userCount = users.count();
+        }
+        file.close();
+    }
+
+
+    ui->lineEdit->setText(QString::number(userCount));
+    ui->lineEdit->setReadOnly(true);
+    ui->lineEdit->setAlignment(Qt::AlignCenter);
+
     adminHistoryWindow = new AdminHistoryWindow(this);
     memInfoDialog = new MemInfoDialog(this);
 }
