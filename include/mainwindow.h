@@ -46,6 +46,7 @@ private slots:
     void on_pushButton_2_clicked(); // 로그인 버튼
 
 private:
+    QString loginId;// user 로그인시 문자열 기록
     UserWindow* userWin;
     AdminWindow* adminWin;
     Ui::MainWindow *ui; // UI 부품들에 접근하기 위한 포인터

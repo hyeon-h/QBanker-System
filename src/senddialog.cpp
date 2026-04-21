@@ -1,9 +1,10 @@
 #include "senddialog.h"
 #include "ui_senddialog.h"
 
-SendDialog::SendDialog(QWidget *parent)
+SendDialog::SendDialog(QWidget *parent,QString id)
     : QDialog(parent)
     , ui(new Ui::SendDialog)
+    , loginId(id)
 {
     ui->setupUi(this);
     setWindowTitle("Send");
@@ -16,7 +17,7 @@ SendDialog::~SendDialog()
 
 void SendDialog::on_pushButton_clicked()
 {
-    qDebug()<<"send";
+    qDebug()<<loginId;
     if(ui->lineEdit->text() == "")
     {
         ui->label_5->setText("목적지가 유효하지 않습니다.");
@@ -25,7 +26,6 @@ void SendDialog::on_pushButton_clicked()
     {
         ui->label_5->setText("금액이 유효하지 않습니다");
     }
-
 }
 
 void SendDialog::clearInputs()

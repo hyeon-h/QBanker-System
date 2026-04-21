@@ -7,8 +7,6 @@ AdminWindow::AdminWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("AdminLogin");
-    adminHistoryWindow = new AdminHistoryWindow(this);
-    memInfoDialog = new MemInfoDialog(this);
 }
 
 AdminWindow::~AdminWindow()
@@ -19,14 +17,15 @@ AdminWindow::~AdminWindow()
 void AdminWindow::on_pushButton_clicked()
 {
     qDebug()<<"가입자 조회";
+    memInfoDialog = new MemInfoDialog(this);
+    memInfoDialog->setAttribute(Qt::WA_DeleteOnClose);
     memInfoDialog->show();
-    this->hide();
 }
-
 
 void AdminWindow::on_pushButton_2_clicked()
 {
     qDebug()<<"입출금 내역";
+    adminHistoryWindow = new AdminHistoryWindow(this);
+    adminHistoryWindow->setAttribute(Qt::WA_DeleteOnClose);
     adminHistoryWindow->show();
-    this->hide();
 }

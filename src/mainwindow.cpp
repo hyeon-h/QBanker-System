@@ -15,8 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("QBankerSystem");
     path = qApp->applicationDirPath() + "/../../../QBankerSystem";
     QDir().mkpath(path+ "/data");
-    userWin = new UserWindow(this);
-    adminWin = new AdminWindow(this);
     this->setFixedSize(550, 500);
 }
 
@@ -46,6 +44,7 @@ void MainWindow::on_pushButton_2_clicked() {
         // [관리자 모드] XML을 뒤지지 않고 지정된 값으로 확인 (또는 관리자용 태그 확인)
         // 수동으로 추가한 admin 계정 정보를 여기서 체크합니다.
         if (inputId == "admin" && inputPw == "1234") {
+            adminWin = new AdminWindow(this);
             ui->lineEdit_3->setText("관리자 모드로 로그인되었습니다.");
             // 관리자 전용 창 열기 로직 추가 가능
             adminWin->show();
@@ -76,11 +75,13 @@ void MainWindow::on_pushButton_2_clicked() {
 
         if (xmlId == inputId && xmlPw == inputPw) {
             loginSuccess = true;
+            loginId = inputId;
             break;
         }
     }
 
     if (loginSuccess) {
+        userWin = new UserWindow(this, loginId);
         ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
         userWin->show();
         this->hide();
@@ -93,7 +94,7 @@ void MainWindow::on_pushButton_2_clicked() {
 
 void MainWindow::saveJson()
 {
-    History hist1;
+    History hist1; // 1. hist 생성
     hist1.dateTime = QDateTime(QDate(2026, 4, 21), QTime(15, 30, 0));
     hist1.from = "홍길동";
     hist1.amount = 50000;
@@ -107,22 +108,22 @@ void MainWindow::saveJson()
     hist2.action = ActionType::Transfer;
     hist2.to = "홍길동";
 
-    hists.push_back(hist1);
+    hists.push_back(hist1); // 2.vector에 추가
     hists.push_back(hist2);
 
-    QJsonArray array;
+    QJsonArray array; //3. jsonArray에 추가 (여기부터 저장)
     for(const History& h : std::as_const(hists)) // const User& u : u를 읽기전용으로 받음
-    {                                         // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
+    {                                            // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
         QJsonObject obj;
         obj["dateTime"] = h.dateTime.toString(Qt::ISODate); //ISO Date 규격으로 변환한 문자열을 저장
         obj["from"] = h.from;
-        obj["amount"] = static_cast<qint64>(h.amount);
-        obj["action"] = static_cast<int>(h.action);
+        obj["amount"] = static_cast<qint64>(h.amount); // 1000은 기본적으로 int니까 qint64로 금액 범위 확장
+        obj["action"] = static_cast<int>(h.action); // enum class를 저장하려면 정수로 저장해야함.
         obj["to"] = h.to;
         array.append(obj);
     }
 
-    QJsonDocument doc(array);
+    QJsonDocument doc(array); //4.jsondoc 생성 및 파일 write
     QString fileName = path + "/data/history.json";
     QFile file(fileName);
     if(!file.open(QFile::WriteOnly)) return;

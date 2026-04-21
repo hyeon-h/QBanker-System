@@ -3,14 +3,13 @@
 #include "senddialog.h"
 #include "userhistorywindow.h"
 #include <QMessageBox>
-UserWindow::UserWindow(QWidget *parent)
+UserWindow::UserWindow(QWidget *parent , QString id)
     : QMainWindow(parent)
     , ui(new Ui::UserWindow)
+    , loginId(id)
 {
     ui->setupUi(this);
     setWindowTitle("UserLogin");
-    sendDialog = new SendDialog(this);
-    userHistoryWindow = new UserHistoryWindow(this);
 }
 
 UserWindow::~UserWindow()
@@ -21,17 +20,20 @@ UserWindow::~UserWindow()
 void UserWindow::on_pushButton_clicked()
 {
     qDebug()<<"송금";
+    qDebug()<<loginId;
+    sendDialog = new SendDialog(this, loginId);
+    sendDialog->setAttribute(Qt::WA_DeleteOnClose);
     sendDialog->clearInputs();
     sendDialog->show();
-    this->hide();
 }
 
 
 void UserWindow::on_pushButton_2_clicked()
 {
     qDebug()<<"입출금 내역";
+    userHistoryWindow = new UserHistoryWindow(this);
+    userHistoryWindow->setAttribute(Qt::WA_DeleteOnClose);
     userHistoryWindow->show();
-    this->hide();
 }
 
 
