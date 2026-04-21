@@ -17,17 +17,18 @@ qt_add_executable(QBankerSystem
     WIN32 MACOSX_BUNDLE
     
     # 헤더 파일 경로 (include 폴더 안에 있다면)
-    mainwindow.h
+    include/mainwindow.h
+    include/signup.h
     # 아까 사진에서 form 안에 있었음
 
     # 소스 파일 경로
-    main.cpp
-    mainwindow.cpp
-
+    src/main.cpp
+    src/mainwindow.cpp
+    src/signup.cpp
 
     # UI 파일 경로
     form/mainwindow.ui
-    signup.h signup.cpp form/signup.ui
+    form/signup.ui
 
 )
 

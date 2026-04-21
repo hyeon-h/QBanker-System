@@ -48,4 +48,11 @@
         <Balance>500000</Balance>
         <IsActive>true</IsActive>
     </User>
+    <User>
+        <Name>hyeon</Name>
+        <JoinDate>2026-04-21 11:46:24</JoinDate>
+        <Password>111</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
 </Users>
