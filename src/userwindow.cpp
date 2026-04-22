@@ -54,9 +54,9 @@ void UserWindow::on_pushButton_3_clicked()
         h.to = "";
         h.action = ActionType::Delete;
         h.amount = 0;
-        // DataManager의 리스트에 추가하고 JSON으로 저장
-        DataManager::instance().hists.append(h);
-        DataManager::instance().saveJson();
+
+        DataManager::instance().addHistory(h);
+
         this->close();
     }
 }

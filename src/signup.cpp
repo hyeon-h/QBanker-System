@@ -116,9 +116,7 @@ void Signup::saveToXml(QString id, QString pw, int deposit) {
         h.action = ActionType::CreateAccount;
         h.amount = deposit;        // 초기 입금액
 
-        // DataManager의 리스트에 추가하고 JSON으로 저장
-        DataManager::instance().hists.append(h);
-        DataManager::instance().saveJson();
+        DataManager::instance().addHistory(h);
 
         ui->lineEdit->setText("회원가입 완료: [" + id + "]님 환영합니다.");
         QTimer::singleShot(2000, this, &Signup::accept);

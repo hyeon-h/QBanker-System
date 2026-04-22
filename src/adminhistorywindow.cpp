@@ -69,24 +69,30 @@ void AdminHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
     const auto& allHists = DataManager::instance().hists;
 
     for(const History& h : std::as_const(allHists)) {
+        // 1. 날짜 필터
         if(sc.useDate) {
             if(h.dateTime.date() < sc.start || h.dateTime.date() > sc.end) continue;
         }
 
+        // 2. 금액 필터
         if(sc.useAmount) {
             if(h.amount < sc.minAmount || h.amount > sc.maxAmount) continue;
         }
 
-        if(sc.useUser) {
-            bool isMatch = false;
-            if(sc.typeIndex == 0) { // 전체
-                if(h.from == sc.userName || h.to == sc.userName) isMatch = true;
-            } else if(sc.typeIndex == 1) { // 송신
-                if(h.from == sc.userName) isMatch = true;
-            } else if(sc.typeIndex == 2) { // 수신
-                if(h.to == sc.userName) isMatch = true;
-            }
-            if(!isMatch) continue;
+        // 3. 타입 필터 (0:전체, 1:입출금, 2:기타)
+        if (sc.typeIndex == 1) {
+            // 입출금: Transfer(송금) 내역만 통과
+            if (h.action != ActionType::Transfer) continue;
+        }
+        else if (sc.typeIndex == 2) {
+            // 기타: 계좌 생성(CreateAccount) 및 삭제(Delete)만 통과
+            if (h.action == ActionType::Transfer) continue;
+        }
+
+        // 4. 사용자 필터 (체크박스 체크 시에만 작동)
+        if (sc.useUser) {
+            // 보낸 사람이나 받은 사람 중 검색어가 포함되어 있어야 함
+            if (h.from != sc.userName && h.to != sc.userName) continue;
         }
 
         addTableRow(h);

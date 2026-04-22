@@ -188,12 +188,12 @@
         </item>
         <item>
          <property name="text">
-          <string>송금</string>
+          <string>입출금</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>입금</string>
+          <string>기타</string>
          </property>
         </item>
        </widget>

@@ -15,6 +15,7 @@ DataManager::DataManager()
 
 void DataManager::addHistory(const History& h)
 {
+    loadJson();
     hists.push_back(h);// 2.vector에 추가
     saveJson();
 }
