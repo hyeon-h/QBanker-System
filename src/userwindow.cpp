@@ -25,8 +25,7 @@ UserWindow::~UserWindow()
 #include <QFile>
 #include <QDomDocument>
 
-void UserWindow::refreshUserInfo()
-{
+void UserWindow::refreshUserInfo(){
     QString currentName = ui->label_2->text();
 
     QFile file("../../data/user_data.xml");
@@ -49,8 +48,7 @@ void UserWindow::refreshUserInfo()
 }
 
 
-void UserWindow::on_pushButton_clicked()
-{
+void UserWindow::on_pushButton_clicked(){
     QString currentUserName = ui->label_2->text();
     sendDialog->setSenderInfo(currentUserName);
     qDebug()<<"송금";
@@ -61,8 +59,7 @@ void UserWindow::on_pushButton_clicked()
 }
 
 
-void UserWindow::on_pushButton_2_clicked()
-{
+void UserWindow::on_pushButton_2_clicked(){
     qDebug()<<"입출금 내역";
     userHistoryWindow = new UserHistoryWindow(this);
     userHistoryWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -70,8 +67,7 @@ void UserWindow::on_pushButton_2_clicked()
 }
 
 
-void UserWindow::on_pushButton_3_clicked()
-{
+void UserWindow::on_pushButton_3_clicked(){
     qDebug() << "회원 탈퇴 시도";
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "회원 탈퇴",
@@ -139,14 +135,12 @@ void UserWindow::on_pushButton_3_clicked()
     }
 }
 
-void UserWindow::setUserInfo(QString name, QString balance)
-{
+void UserWindow::setUserInfo(QString name, QString balance){
     ui->label_2->setText(name);
     ui->label_5->setText(balance);
 }
 
-void UserWindow::showEvent(QShowEvent *event)
-{
+void UserWindow::showEvent(QShowEvent *event){
     QMainWindow::showEvent(event);
     refreshUserInfo();
 }

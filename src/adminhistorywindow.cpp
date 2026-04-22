@@ -28,26 +28,22 @@ AdminHistoryWindow::~AdminHistoryWindow()
     delete ui;
 }
 
-void AdminHistoryWindow::on_pushButton_clicked()
-{
+void AdminHistoryWindow::on_pushButton_clicked(){
     qDebug()<<"Ok";
 }
 
 
-void AdminHistoryWindow::on_pushButton_2_clicked()
-{
+void AdminHistoryWindow::on_pushButton_2_clicked(){
     qDebug()<<"Cancel";
     this->close();
 }
 
-void AdminHistoryWindow::closeEvent(QCloseEvent *event)
-{
+void AdminHistoryWindow::closeEvent(QCloseEvent *event){
     parentWidget()->show();
     event->accept();
 }
 
-void AdminHistoryWindow::on_pushButton_3_clicked()
-{
+void AdminHistoryWindow::on_pushButton_3_clicked(){
     SearchCriteria sc;
     sc.useDate = ui->checkBox->isChecked(); //날짜 조건
     sc.start = ui->dateEdit->date();

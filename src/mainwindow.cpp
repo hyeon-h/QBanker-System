@@ -89,8 +89,7 @@ void MainWindow::on_pushButton_2_clicked() {
         }
     }
 
-    if (loginSuccess==false)
-    {
+    if (loginSuccess==false){
          ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
     }
 }

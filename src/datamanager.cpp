@@ -13,15 +13,13 @@ DataManager::DataManager()
     QDir().mkpath(path+ "/data");
 }
 
-void DataManager::addHistory(const History& h)
-{
+void DataManager::addHistory(const History& h){
     loadJson();
     hists.push_back(h);// 2.vector에 추가
     saveJson();
 }
 
-void DataManager::saveJson()
-{
+void DataManager::saveJson(){
     QJsonArray array; //3. jsonArray에 추가 (여기부터 저장)
     for(const History &h : std::as_const(hists))// const User& u : u를 읽기전용으로 받음
     {                                           // std::as_const(users): users 컨테이너 자체를 읽기 전용으로 만듬.
@@ -42,8 +40,7 @@ void DataManager::saveJson()
     file.close();
 }
 
-void DataManager::loadJson()
-{
+void DataManager::loadJson(){
     QString fileName = path + "/data/history.json";
     QFile file(fileName);
     if(!file.open(QFile::ReadOnly)) return;

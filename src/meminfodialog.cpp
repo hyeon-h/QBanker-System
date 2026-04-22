@@ -19,8 +19,7 @@ MemInfoDialog::~MemInfoDialog()
     delete ui;
 }
 
-void MemInfoDialog::loadUserData()
-{
+void MemInfoDialog::loadUserData(){
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
 
@@ -64,30 +63,25 @@ void MemInfoDialog::loadUserData()
         }
     }
 
-
     ui->tableWidget->resizeColumnsToContents();
 }
 
-void MemInfoDialog::on_pushButton_clicked()
-{
+void MemInfoDialog::on_pushButton_clicked(){
     qDebug()<<"Ok";
     this->accept();
 }
 
 
-void MemInfoDialog::on_pushButton_2_clicked()
-{
+void MemInfoDialog::on_pushButton_2_clicked(){
     qDebug()<<"Cancel";
     this->close();
 }
 
-void MemInfoDialog::closeEvent(QCloseEvent *event)
-{
+void MemInfoDialog::closeEvent(QCloseEvent *event){
     parentWidget()->show();
     event->accept();
 }
-void MemInfoDialog::on_pushButton_3_clicked()
-{
+void MemInfoDialog::on_pushButton_3_clicked(){
     // 1. XML 파일 읽기
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) return;

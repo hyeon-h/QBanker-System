@@ -119,21 +119,18 @@ void SendDialog::on_pushButton_clicked()
     ui->lineEdit_2->clear();
 }
 
-void SendDialog::clearInputs()
-{
+void SendDialog::clearInputs(){
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
     ui->label_5->clear();
 }
 
-void SendDialog::on_pushButton_2_clicked()
-{
+void SendDialog::on_pushButton_2_clicked(){
     qDebug()<<"cancel";
     this->close();
 }
 
-void SendDialog::closeEvent(QCloseEvent *event)
-{
+void SendDialog::closeEvent(QCloseEvent *event){
     parentWidget()->show();
     event->accept();
 }

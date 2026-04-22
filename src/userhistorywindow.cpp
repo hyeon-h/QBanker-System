@@ -35,25 +35,21 @@ UserHistoryWindow::~UserHistoryWindow()
     delete ui;
 }
 
-void UserHistoryWindow::on_pushButton_clicked()
-{
+void UserHistoryWindow::on_pushButton_clicked(){
     qDebug()<<"ok";
 }
 
-void UserHistoryWindow::on_pushButton_2_clicked()
-{
+void UserHistoryWindow::on_pushButton_2_clicked(){
     qDebug()<<"cancel";
     this->close();
 }
 
-void UserHistoryWindow::closeEvent(QCloseEvent *event)
-{
+void UserHistoryWindow::closeEvent(QCloseEvent *event){
     parentWidget()->show();
     event->accept();
 }
 
-void UserHistoryWindow::on_pushButton_3_clicked()
-{
+void UserHistoryWindow::on_pushButton_3_clicked(){
     SearchCriteria sc;
     sc.useDate = ui->checkBox->isChecked();
     sc.start = ui->dateEdit->date();
