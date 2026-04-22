@@ -6,143 +6,326 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>500</height>
+    <width>440</width>
+    <height>400</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>370</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>송금</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog {
+    background-color: #1e1e2e;
+}
+QWidget {
+    color: #cdd6f4;
+    font-family: &quot;Segoe UI&quot;, &quot;Malgun Gothic&quot;, sans-serif;
+    font-size: 13px;
+}
+QWidget#card {
+    background-color: #242436;
+    border: 1px solid #313244;
+    border-radius: 14px;
+}
+QLabel {
+    color: #a6adc8;
+    font-weight: 500;
+    background: transparent;
+}
+QLabel#label_4 {
+    color: #cdd6f4;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+}
+/* 상태/에러 메시지 라인 */
+QLabel#label_5 {
+    color: #f38ba8;
+    font-size: 12px;
+    font-weight: 500;
+    background: transparent;
+}
+QLineEdit {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QLineEdit:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QLineEdit:hover {
+    border: 1px solid #6c7086;
+}
+QDateTimeEdit {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QDateTimeEdit:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QDateTimeEdit:hover {
+    border: 1px solid #6c7086;
+}
+QDateTimeEdit::drop-down {
+    background-color: #45475a;
+    border: none;
+    width: 22px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+QDateTimeEdit::drop-down:hover {
+    background-color: #585b70;
+}
+QDateTimeEdit::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+QCalendarWidget QWidget {
+    background-color: #242436;
+    color: #cdd6f4;
+}
+QCalendarWidget QToolButton {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 4px;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #45475a;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    selection-color: #1e1e2e;
+}
+QPushButton {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-weight: 600;
+    min-height: 22px;
+}
+QPushButton:hover {
+    background-color: #a5c4fb;
+}
+QPushButton:pressed {
+    background-color: #74a0e8;
+}
+QPushButton#pushButton_2 {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+}
+QPushButton#pushButton_2:hover {
+    background-color: #45475a;
+    border: 1px solid #89b4fa;
+}
+QPushButton#pushButton_2:pressed {
+    background-color: #585b70;
+}
+   </string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="leftMargin"><number>24</number></property>
+   <property name="topMargin"><number>24</number></property>
+   <property name="rightMargin"><number>24</number></property>
+   <property name="bottomMargin"><number>24</number></property>
    <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_2"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>보내는 곳</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LayoutDirection::LeftToRight</enum>
-       </property>
-       <property name="text">
-        <string>금액</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0" colspan="2">
-      <widget class="QLabel" name="label_5">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>상태 메세지</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" colspan="2">
-      <widget class="QLabel" name="label_4">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>송금</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Cancle</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>예약 날짜</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QPushButton" name="pushButton">
-       <property name="minimumSize">
-        <size>
-         <width>250</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="sizeIncrement">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Send</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QDateTimeEdit" name="dateTimeEdit"/>
-     </item>
-    </layout>
+    <widget class="QWidget" name="card" native="true">
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="leftMargin"><number>28</number></property>
+      <property name="topMargin"><number>26</number></property>
+      <property name="rightMargin"><number>28</number></property>
+      <property name="bottomMargin"><number>24</number></property>
+      <property name="spacing"><number>16</number></property>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing"><number>12</number></property>
+        <property name="verticalSpacing"><number>12</number></property>
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="label_4">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>송금</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>보내는 곳</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="placeholderText">
+           <string>계좌번호 또는 수취인 이름</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>금액</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="placeholderText">
+           <string>송금할 금액 (원)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="errorTopSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>14</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="buttonLayout">
+        <property name="spacing"><number>10</number></property>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="sizeIncrement">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>송금</string>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>취소</string>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

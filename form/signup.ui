@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>460</height>
+    <width>460</width>
+    <height>520</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
@@ -17,102 +23,375 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>신규 가입</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>410</y>
-     <width>201</width>
-     <height>32</height>
-    </rect>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog {
+    background-color: #1e1e2e;
+}
+QWidget {
+    color: #cdd6f4;
+    font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+QWidget#card {
+    background-color: #242436;
+    border: 1px solid #313244;
+    border-radius: 14px;
+}
+QLabel#titleLabel {
+    color: #cdd6f4;
+    font-size: 20px;
+    font-weight: 700;
+}
+QLabel#subtitleLabel {
+    color: #6c7086;
+    font-size: 11px;
+    font-weight: 400;
+}
+QLabel {
+    color: #a6adc8;
+    font-weight: 500;
+    background: transparent;
+}
+QLineEdit {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QLineEdit:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QLineEdit:hover:!read-only {
+    border: 1px solid #6c7086;
+}
+/* 에러 메시지 라인 (읽기 전용) */
+QLineEdit#lineEdit {
+    background-color: transparent;
+    border: none;
+    color: #f38ba8;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 2px;
+    min-height: 14px;
+}
+QLineEdit#lineEdit:focus {
+    background-color: transparent;
+    border: none;
+}
+QSpinBox {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QSpinBox:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QSpinBox:hover {
+    border: 1px solid #6c7086;
+}
+QSpinBox::up-button, QSpinBox::down-button {
+    background-color: #45475a;
+    border: none;
+    width: 18px;
+}
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #585b70;
+}
+QSpinBox::up-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+QSpinBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+QDialogButtonBox QPushButton {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 22px;
+    font-weight: 600;
+    min-width: 80px;
+    min-height: 20px;
+}
+QDialogButtonBox QPushButton:hover {
+    background-color: #a5c4fb;
+}
+QDialogButtonBox QPushButton:pressed {
+    background-color: #74a0e8;
+}
+/* Cancel 버튼은 세컨더리 스타일 */
+QDialogButtonBox QPushButton[text="Cancel"],
+QDialogButtonBox QPushButton[text="취소"] {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+}
+QDialogButtonBox QPushButton[text="Cancel"]:hover,
+QDialogButtonBox QPushButton[text="취소"]:hover {
+    background-color: #45475a;
+    border: 1px solid #89b4fa;
+}
+   </string>
+  </property>
+  <layout class="QGridLayout" name="centralGridLayout">
+   <property name="leftMargin">
+    <number>24</number>
    </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
+   <property name="topMargin">
+    <number>24</number>
    </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+   <property name="rightMargin">
+    <number>24</number>
    </property>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>481</width>
-     <height>381</height>
-    </rect>
+   <property name="bottomMargin">
+    <number>24</number>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item row="0" column="0">
+    <widget class="QWidget" name="card" native="true">
+     <layout class="QVBoxLayout" name="cardLayout">
+      <property name="leftMargin">
+       <number>28</number>
+      </property>
+      <property name="topMargin">
+       <number>26</number>
+      </property>
+      <property name="rightMargin">
+       <number>28</number>
+      </property>
+      <property name="bottomMargin">
+       <number>22</number>
+      </property>
+      <property name="spacing">
+       <number>14</number>
+      </property>
       <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>  이름 입력  :  </string>
+       <layout class="QVBoxLayout" name="titleLayout">
+        <property name="spacing">
+         <number>2</number>
         </property>
+        <item>
+         <widget class="QLabel" name="titleLabel">
+          <property name="text">
+           <string>신규 가입</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="subtitleLabel">
+          <property name="text">
+           <string>계정 정보를 입력하여 새 계좌를 개설하세요</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QWidget" name="verticalLayoutWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>이름</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_2">
+             <property name="placeholderText">
+              <string>사용자 이름을 입력하세요</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_3">
+             <property name="echoMode">
+              <enum>QLineEdit::Password</enum>
+             </property>
+             <property name="placeholderText">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>비밀번호 확인</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_4">
+             <property name="echoMode">
+              <enum>QLineEdit::Password</enum>
+             </property>
+             <property name="placeholderText">
+              <string>비밀번호를 한 번 더 입력</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>초기 입금 금액</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox">
+             <property name="suffix">
+              <string> 원</string>
+             </property>
+             <property name="maximum">
+              <number>999999999</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>8</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="standardButtons">
+         <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+        </property>
+        <property name="centerButtons">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>  비밀번호 입력  :  </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>  비밀번호 확인  :  </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>  초기 입금 금액   :  </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="spinBox">
-        <property name="suffix">
-         <string>원</string>
-        </property>
-        <property name="maximum">
-         <number>999999999</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

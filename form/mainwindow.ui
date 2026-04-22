@@ -6,98 +6,314 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>316</height>
+    <width>420</width>
+    <height>440</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>360</width>
+    <height>400</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>QBankerSystem</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QMainWindow, QWidget#centralwidget {
+    background-color: #1e1e2e;
+}
+QWidget {
+    color: #cdd6f4;
+    font-family: &quot;Segoe UI&quot;, &quot;Malgun Gothic&quot;, sans-serif;
+    font-size: 13px;
+}
+QWidget#card {
+    background-color: #242436;
+    border: 1px solid #313244;
+    border-radius: 14px;
+}
+QLabel#titleLabel {
+    color: #cdd6f4;
+    font-size: 20px;
+    font-weight: 700;
+}
+QLabel#subtitleLabel {
+    color: #6c7086;
+    font-size: 11px;
+    font-weight: 400;
+}
+QLabel {
+    color: #a6adc8;
+    font-weight: 500;
+    background: transparent;
+}
+QLineEdit {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QLineEdit:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QLineEdit:hover:!read-only {
+    border: 1px solid #6c7086;
+}
+/* 에러 메시지 라인 (읽기 전용) */
+QLineEdit#lineEdit_3 {
+    background-color: transparent;
+    border: none;
+    color: #f38ba8;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 2px;
+    min-height: 14px;
+}
+QLineEdit#lineEdit_3:focus {
+    background-color: transparent;
+    border: none;
+}
+QCheckBox {
+    color: #cdd6f4;
+    spacing: 8px;
+    background: transparent;
+}
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #6c7086;
+    border-radius: 4px;
+    background-color: #313244;
+}
+QCheckBox::indicator:checked {
+    background-color: #89b4fa;
+    border: 1px solid #89b4fa;
+}
+QCheckBox::indicator:hover {
+    border: 1px solid #89b4fa;
+}
+QPushButton {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #a5c4fb;
+}
+QPushButton:pressed {
+    background-color: #74a0e8;
+}
+QPushButton#pushButton {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+}
+QPushButton#pushButton:hover {
+    background-color: #45475a;
+    border: 1px solid #89b4fa;
+}
+QPushButton#pushButton:pressed {
+    background-color: #585b70;
+}
+   </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>331</width>
-      <height>471</height>
-     </rect>
+   <layout class="QGridLayout" name="centralGridLayout">
+    <property name="leftMargin">
+     <number>24</number>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_9">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="topMargin">
+     <number>24</number>
+    </property>
+    <property name="rightMargin">
+     <number>24</number>
+    </property>
+    <property name="bottomMargin">
+     <number>24</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QWidget" name="card" native="true">
+      <layout class="QVBoxLayout" name="cardLayout">
+       <property name="spacing">
+        <number>14</number>
+       </property>
+       <property name="leftMargin">
+        <number>28</number>
+       </property>
+       <property name="topMargin">
+        <number>26</number>
+       </property>
+       <property name="rightMargin">
+        <number>28</number>
+       </property>
+       <property name="bottomMargin">
+        <number>26</number>
+       </property>
        <item>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="text">
-          <string> 관리자 로그인 모드</string>
+        <layout class="QVBoxLayout" name="titleLayout">
+         <property name="spacing">
+          <number>2</number>
          </property>
-        </widget>
+         <item>
+          <widget class="QLabel" name="titleLabel">
+           <property name="text">
+            <string>QBankerSystem</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="subtitleLabel">
+           <property name="text">
+            <string>계정으로 로그인하거나 새로 가입하세요</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QCheckBox" name="checkBox">
+             <property name="text">
+              <string> 관리자 로그인 모드</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>이름</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit">
+             <property name="placeholderText">
+              <string>사용자 이름을 입력하세요</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_2">
+             <property name="echoMode">
+              <enum>QLineEdit::EchoMode::Password</enum>
+             </property>
+             <property name="placeholderText">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_3">
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="placeholderText">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>로그인</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>신규 가입</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </item>
       </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_11">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>  이름   :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_10">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string> 비밀번호  :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLineEdit" name="lineEdit_3"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_9">
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>로그인</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>신규 가입</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>26</height>
+     <width>420</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>

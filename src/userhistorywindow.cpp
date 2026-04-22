@@ -49,61 +49,72 @@ void UserHistoryWindow::closeEvent(QCloseEvent *event){
     event->accept();
 }
 
-void UserHistoryWindow::on_pushButton_3_clicked(){
+void UserHistoryWindow::on_pushButton_3_clicked() {
     SearchCriteria sc;
+
+    // 1. 날짜 필터 조건 수집
     sc.useDate = ui->checkBox->isChecked();
     sc.start = ui->dateEdit->date();
     sc.end = ui->dateEdit_2->date();
 
+    // 2. 금액 필터 조건 수집
     sc.useAmount = ui->checkBox_2->isChecked();
     sc.minAmount = ui->spinBox->value();
     sc.maxAmount = ui->spinBox_2->value();
 
+    // 3. 거래 유형(전체/송금/입금) 인덱스 수집
     sc.typeIndex = ui->comboBox->currentIndex();
 
+    // 수집된 조건을 기반으로 필터링 및 출력 실행
     filterAndDisplay(sc);
 }
 
 void UserHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
+    // 기존 테이블 내역 초기화 (새로운 검색 결과를 위해)
     ui->tableWidget->setRowCount(0);
+
+    // 데이터 원본 및 로그인 정보 가져오기
     const auto& allHists = DataManager::instance().hists;
-    QString loginId = DataManager::instance().loginId; // 현재 로그인된 주인님 ID
+    QString loginId = DataManager::instance().loginId;
 
     for(const History& h : std::as_const(allHists)) {
-        // [보안 필터] 일단 나와 관련 없는 내역은 무조건 탈락
+        // [보안 필터] 본인이 보낸 것도 아니고, 받은 것도 아니면 남의 내역이므로 즉시 제외
         if(h.from != loginId && h.to != loginId) continue;
 
-        // [송수신 종류 필터] 콤보박스 선택에 따라 한 번 더 거르기
-        if(sc.typeIndex == 1) { // 송금만 보기
+        // [송수신 종류 필터] 콤보박스 선택값에 따른 분기 처리
+        if(sc.typeIndex == 1) { // '송금'만 보기: 발신자가 본인이 아닌 경우 제외
             if(h.from != loginId) continue;
-        } else if(sc.typeIndex == 2) { // 입금만 보기
+        } else if(sc.typeIndex == 2) { // '입금'만 보기: 수신자가 본인이 아닌 경우 제외
             if(h.to != loginId) continue;
         }
 
-        // [날짜 필터]
+        // [날짜 필터] 체크박스 활성화 시 기간 내에 포함되는지 검사
         if(sc.useDate) {
             if(h.dateTime.date() < sc.start || h.dateTime.date() > sc.end) continue;
         }
 
-        // [금액 필터]
+        // [금액 필터] 체크박스 활성화 시 설정한 최소/최대 금액 범위 검사
         if(sc.useAmount) {
             if(h.amount < sc.minAmount || h.amount > sc.maxAmount) continue;
         }
 
+        // 모든 필터를 통과한 데이터만 테이블 행으로 추가
         addTableRow(h);
     }
 }
 
-void UserHistoryWindow::addTableRow(const History& h) {
+void UserHistoryWindow::addTableRow(const History& h) { //필터링된 History 객체를 테이블 위젯의 한 행(Row)으로 변환하여 추가.
     int row = ui->tableWidget->rowCount();
     ui->tableWidget->insertRow(row);
 
+    // 각 열(Column)에 데이터 배치
+    // 0: 일시, 1: 발신자, 2: 수신자(없으면 -), 3: 금액, 4: 상세 메시지
     ui->tableWidget->setItem(row, 0, new QTableWidgetItem(h.dateTime.toString("yyyy-MM-dd HH:mm:ss")));
     ui->tableWidget->setItem(row, 1, new QTableWidgetItem(h.from));
     ui->tableWidget->setItem(row, 2, new QTableWidgetItem(h.to.isEmpty() ? "-" : h.to));
     ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(h.amount) + "원"));
 
-    // 유저 상황에 맞는 메시지 생성
+    // getUserMessage(h)를 통해 "누구님께 송금" 또는 "누구님께 입금" 등의 메시지 생성 후 출력
     ui->tableWidget->setItem(row, 4, new QTableWidgetItem(getUserMessage(h)));
 }
 
@@ -121,7 +132,7 @@ QString UserHistoryWindow::getUserMessage(const History& h) {
     } else if (h.action == ActionType::CreateAccount) {
         return "계좌 생성 및 초기 입금 축하드립니다.";
     }
-    return "기타 거래";
+    return "기타";
 }
 
 

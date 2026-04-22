@@ -6,229 +6,610 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>800</height>
+    <width>900</width>
+    <height>720</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>760</width>
+    <height>640</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>입출금 내역</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QMainWindow, QWidget#centralwidget {
+    background-color: #1e1e2e;
+}
+QWidget {
+    color: #cdd6f4;
+    font-family: &quot;Segoe UI&quot;, &quot;Malgun Gothic&quot;, sans-serif;
+    font-size: 13px;
+}
+QWidget#filterCard, QWidget#resultCard {
+    background-color: #242436;
+    border: 1px solid #313244;
+    border-radius: 14px;
+}
+QLabel {
+    color: #a6adc8;
+    font-weight: 500;
+    background: transparent;
+}
+QLabel#label {
+    color: #cdd6f4;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+}
+QLabel#label_3, QLabel#label_6, QLabel#label_2 {
+    color: #89b4fa;
+    font-size: 15px;
+    font-weight: 700;
+    background: transparent;
+}
+QLineEdit, QSpinBox, QDateEdit, QComboBox {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    min-height: 18px;
+}
+QLineEdit:focus, QSpinBox:focus, QDateEdit:focus, QComboBox:focus {
+    border: 1px solid #89b4fa;
+    background-color: #363752;
+}
+QLineEdit:hover, QSpinBox:hover, QDateEdit:hover, QComboBox:hover {
+    border: 1px solid #6c7086;
+}
+/* SpinBox arrows */
+QSpinBox::up-button, QSpinBox::down-button {
+    background-color: #45475a;
+    border: none;
+    width: 18px;
+}
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #585b70;
+}
+QSpinBox::up-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+QSpinBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+/* DateEdit drop-down */
+QDateEdit::drop-down {
+    background-color: #45475a;
+    border: none;
+    width: 22px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+QDateEdit::drop-down:hover {
+    background-color: #585b70;
+}
+QDateEdit::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+/* ComboBox */
+QComboBox::drop-down {
+    background-color: #45475a;
+    border: none;
+    width: 22px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+QComboBox::drop-down:hover {
+    background-color: #585b70;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #cdd6f4;
+    width: 0; height: 0;
+}
+QComboBox QAbstractItemView {
+    background-color: #242436;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    selection-background-color: #89b4fa;
+    selection-color: #1e1e2e;
+    outline: none;
+}
+/* Calendar popup */
+QCalendarWidget QWidget {
+    background-color: #242436;
+    color: #cdd6f4;
+}
+QCalendarWidget QToolButton {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 4px;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #45475a;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    selection-background-color: #89b4fa;
+    selection-color: #1e1e2e;
+}
+/* CheckBox */
+QCheckBox {
+    color: #cdd6f4;
+    spacing: 8px;
+    background: transparent;
+}
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #6c7086;
+    border-radius: 4px;
+    background-color: #313244;
+}
+QCheckBox::indicator:checked {
+    background-color: #89b4fa;
+    border: 1px solid #89b4fa;
+}
+QCheckBox::indicator:hover {
+    border: 1px solid #89b4fa;
+}
+/* Buttons */
+QPushButton {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    min-height: 22px;
+}
+QPushButton:hover {
+    background-color: #45475a;
+    border: 1px solid #89b4fa;
+}
+QPushButton:pressed {
+    background-color: #585b70;
+}
+QPushButton#pushButton_3 {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+}
+QPushButton#pushButton_3:hover {
+    background-color: #a5c4fb;
+}
+QPushButton#pushButton_3:pressed {
+    background-color: #74a0e8;
+}
+QPushButton#pushButton {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+}
+QPushButton#pushButton:hover {
+    background-color: #a5c4fb;
+}
+QPushButton#pushButton:pressed {
+    background-color: #74a0e8;
+}
+/* Table */
+QTableWidget {
+    background-color: #1e1e2e;
+    alternate-background-color: #242436;
+    color: #cdd6f4;
+    gridline-color: #313244;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    selection-background-color: #89b4fa;
+    selection-color: #1e1e2e;
+    outline: none;
+}
+QTableWidget::item {
+    padding: 6px;
+    border: none;
+}
+QTableWidget::item:selected {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+}
+QHeaderView::section {
+    background-color: #313244;
+    color: #89b4fa;
+    padding: 8px;
+    border: none;
+    border-right: 1px solid #1e1e2e;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+QHeaderView::section:last {
+    border-right: none;
+}
+QHeaderView {
+    background-color: #313244;
+}
+QTableView QTableCornerButton::section {
+    background-color: #313244;
+    border: none;
+}
+QTableCornerButton::section {
+    background-color: #313244;
+    border: none;
+}
+/* Scrollbar */
+QScrollBar:vertical {
+    background: #1e1e2e;
+    width: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical {
+    background: #45475a;
+    border-radius: 5px;
+    min-height: 20px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #585b70;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+QScrollBar:horizontal {
+    background: #1e1e2e;
+    height: 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+QScrollBar::handle:horizontal {
+    background: #45475a;
+    border-radius: 5px;
+    min-width: 20px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #585b70;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+   </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin"><number>24</number></property>
+    <property name="topMargin"><number>20</number></property>
+    <property name="rightMargin"><number>24</number></property>
+    <property name="bottomMargin"><number>20</number></property>
+    <property name="spacing"><number>14</number></property>
     <item>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="3" column="2">
-       <widget class="QDateEdit" name="dateEdit">
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="5">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>날짜</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="3">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>최대 금액</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0" colspan="2">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>최소 금액</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0" colspan="5">
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>금액 범위</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0" colspan="3">
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>OK</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="3">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>송수신 종류</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="QLabel" name="label_5">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>종료 날짜</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="label_4">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>시작 날짜</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QCheckBox" name="checkBox">
-        <property name="text">
-         <string>사용</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="5">
-       <widget class="QCheckBox" name="checkBox_2">
-        <property name="text">
-         <string>사용</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="4" colspan="2">
-       <widget class="QDateEdit" name="dateEdit_2">
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="6">
-       <widget class="QLabel" name="label">
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>입출금 내역</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0" colspan="6">
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="text">
-         <string>검색</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0" colspan="6">
-       <widget class="QTableWidget" name="tableWidget">
-        <property name="columnCount">
-         <number>5</number>
-        </property>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
-       </widget>
-      </item>
-      <item row="12" column="3" colspan="3">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="text">
-         <string>Cancle</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="4" colspan="2">
-       <widget class="QComboBox" name="comboBox">
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
-        </property>
-        <item>
-         <property name="text">
-          <string>전체</string>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>입출금 내역</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="filterCard" native="true">
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin"><number>20</number></property>
+       <property name="topMargin"><number>18</number></property>
+       <property name="rightMargin"><number>20</number></property>
+       <property name="bottomMargin"><number>18</number></property>
+       <property name="horizontalSpacing"><number>12</number></property>
+       <property name="verticalSpacing"><number>10</number></property>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font><pointsize>11</pointsize></font>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>송금</string>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </item>
-        <item>
          <property name="text">
-          <string>입금</string>
+          <string>날짜 검색 사용</string>
          </property>
-        </item>
-       </widget>
-      </item>
-      <item row="7" column="2">
-       <widget class="QSpinBox" name="spinBox"/>
-      </item>
-      <item row="7" column="4" colspan="2">
-       <widget class="QSpinBox" name="spinBox_2"/>
-      </item>
-     </layout>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="5">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="label_4">
+         <property name="minimumSize">
+          <size><width>90</width><height>0</height></size>
+         </property>
+         <property name="text">
+          <string>시작 날짜</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+         <property name="displayFormat">
+          <string>yyyy-MM-dd</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLabel" name="label_5">
+         <property name="minimumSize">
+          <size><width>90</width><height>0</height></size>
+         </property>
+         <property name="text">
+          <string>종료 날짜</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4" colspan="2">
+        <widget class="QDateEdit" name="dateEdit_2">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+         <property name="displayFormat">
+          <string>yyyy-MM-dd</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="6">
+        <widget class="Line" name="divider1">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #313244; background-color: #313244; min-height: 1px; max-height: 1px;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font><pointsize>11</pointsize></font>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>금액 범위 검색 사용</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1" colspan="5">
+        <widget class="QCheckBox" name="checkBox_2">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>최소 금액</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QSpinBox" name="spinBox">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="suffix">
+          <string> 원</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="3">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>최대 금액</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="4" colspan="2">
+        <widget class="QSpinBox" name="spinBox_2">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="suffix">
+          <string> 원</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="6">
+        <widget class="Line" name="divider2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #313244; background-color: #313244; min-height: 1px; max-height: 1px;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="3">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font><pointsize>11</pointsize></font>
+         </property>
+         <property name="text">
+          <string>송수신 종류</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3" colspan="3">
+        <widget class="QComboBox" name="comboBox">
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+         </property>
+         <item>
+          <property name="text"><string>전체</string></property>
+         </item>
+         <item>
+          <property name="text"><string>송금</string></property>
+         </item>
+         <item>
+          <property name="text"><string>입금</string></property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="6">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>검색</string>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="resultCard" native="true">
+      <layout class="QVBoxLayout" name="resultCardLayout">
+       <property name="leftMargin"><number>16</number></property>
+       <property name="topMargin"><number>16</number></property>
+       <property name="rightMargin"><number>16</number></property>
+       <property name="bottomMargin"><number>16</number></property>
+       <property name="spacing"><number>12</number></property>
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+         </property>
+         <property name="columnCount">
+          <number>5</number>
+         </property>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonLayout">
+         <property name="spacing"><number>10</number></property>
+         <item>
+          <spacer name="buttonLeftSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size><width>40</width><height>20</height></size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="minimumSize">
+            <size><width>120</width><height>0</height></size>
+           </property>
+           <property name="text">
+            <string>확인</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="minimumSize">
+            <size><width>120</width><height>0</height></size>
+           </property>
+           <property name="text">
+            <string>취소</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
+    <rect><x>0</x><y>0</y><width>900</width><height>22</height></rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

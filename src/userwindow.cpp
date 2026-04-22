@@ -50,9 +50,8 @@ void UserWindow::refreshUserInfo(){
 
 void UserWindow::on_pushButton_clicked(){
     QString currentUserName = ui->label_2->text();
-    sendDialog->setSenderInfo(currentUserName);
-    qDebug()<<"송금";
     sendDialog = new SendDialog(this);
+    sendDialog->setSenderInfo(currentUserName);
     sendDialog->setAttribute(Qt::WA_DeleteOnClose);
     sendDialog->clearInputs();
     sendDialog->show();

@@ -41,4 +41,18 @@
         <Balance>50000</Balance>
         <IsActive>true</IsActive>
     </User>
+    <User>
+        <Name>황현</Name>
+        <JoinDate>2026-04-22 12:05:33</JoinDate>
+        <Password>123</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>황현5</Name>
+        <JoinDate>2026-04-22 12:06:06</JoinDate>
+        <Password>123</Password>
+        <Balance>5000</Balance>
+        <IsActive>true</IsActive>
+    </User>
 </Users>
