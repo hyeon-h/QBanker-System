@@ -11,6 +11,7 @@ DataManager::DataManager()
 {
     path = qApp->applicationDirPath() + "/../../../QBankerSystem";
     QDir().mkpath(path+ "/data");
+    loadJson();
 }
 
 void DataManager::addHistory(const History& h){
@@ -61,10 +62,5 @@ void DataManager::loadJson(){
         hist.action = static_cast<ActionType>(obj["action"].toInt());
         hist.to = obj["to"].toString();
         hists.push_back(hist);
-    }
-
-    for(const History& h : std::as_const(hists))
-    {
-        qDebug()<<h.dateTime.toString("yyyy-MM-dd HH:mm:ss")<<h.from<<h.amount << static_cast<int>(h.action) <<h.to;
     }
 }

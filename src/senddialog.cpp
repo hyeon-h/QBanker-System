@@ -100,7 +100,7 @@ void SendDialog::on_pushButton_clicked()
     QTextStream out(&file);
     doc.save(out, 4);
     file.close();
-
+    
     History hist; // 1. history 생성
     hist.dateTime = QDateTime::currentDateTime();
     hist.from = senderName;
@@ -114,7 +114,7 @@ void SendDialog::on_pushButton_clicked()
 
     // 8. 결과 알림
     ui->label_5->setText(receiverName + "님께 " + QString::number(sendAmount) + "원 송금 완료!");
-
+    
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
 }
@@ -126,7 +126,6 @@ void SendDialog::clearInputs(){
 }
 
 void SendDialog::on_pushButton_2_clicked(){
-    qDebug()<<"cancel";
     this->close();
 }
 
@@ -137,5 +136,4 @@ void SendDialog::closeEvent(QCloseEvent *event){
 
 void SendDialog::setSenderInfo(QString name) {
     this->senderName = name;
-    qDebug() << "발신자 확인:" << senderName;
 }

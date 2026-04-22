@@ -1,58 +1,16 @@
 <Users>
     <User>
-        <Name>메시</Name>
-        <JoinDate>2026-04-20 18:58:23</JoinDate>
-        <Password>호날두</Password>
-        <Balance>10000700</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>김민지</Name>
-        <JoinDate>2026-04-21 09:49:20</JoinDate>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 14:09:26</JoinDate>
         <Password>123</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>김민희</Name>
-        <JoinDate>2026-04-21 09:50:23</JoinDate>
-        <Password>123</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>hyeon</Name>
-        <JoinDate>2026-04-21 11:46:24</JoinDate>
-        <Password>111</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>황현님</Name>
-        <JoinDate>2026-04-22 08:35:12</JoinDate>
-        <Password>123</Password>
-        <Balance>1000000</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>김현</Name>
-        <JoinDate>2026-04-22 08:58:44</JoinDate>
-        <Password>1234</Password>
-        <Balance>50000</Balance>
+        <Balance>100000</Balance>
         <IsActive>true</IsActive>
     </User>
     <User>
         <Name>황현</Name>
-        <JoinDate>2026-04-22 12:05:33</JoinDate>
+        <JoinDate>2026-04-22 14:14:39</JoinDate>
         <Password>123</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>황현5</Name>
-        <JoinDate>2026-04-22 12:06:06</JoinDate>
-        <Password>123</Password>
-        <Balance>5000</Balance>
+        <Balance>100000</Balance>
         <IsActive>true</IsActive>
     </User>
 </Users>

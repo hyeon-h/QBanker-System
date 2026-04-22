@@ -29,12 +29,11 @@ AdminHistoryWindow::~AdminHistoryWindow()
 }
 
 void AdminHistoryWindow::on_pushButton_clicked(){
-    qDebug()<<"Ok";
+    this->close();
 }
 
 
 void AdminHistoryWindow::on_pushButton_2_clicked(){
-    qDebug()<<"Cancel";
     this->close();
 }
 

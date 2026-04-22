@@ -36,11 +36,10 @@ UserHistoryWindow::~UserHistoryWindow()
 }
 
 void UserHistoryWindow::on_pushButton_clicked(){
-    qDebug()<<"ok";
+    this->close();
 }
 
 void UserHistoryWindow::on_pushButton_2_clicked(){
-    qDebug()<<"cancel";
     this->close();
 }
 

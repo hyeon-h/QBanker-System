@@ -71,13 +71,11 @@ void MemInfoDialog::loadUserData() {
 }
 
 void MemInfoDialog::on_pushButton_clicked(){
-    qDebug()<<"Ok";
     this->accept();
 }
 
 
 void MemInfoDialog::on_pushButton_2_clicked(){
-    qDebug()<<"Cancel";
     this->close();
 }
 
@@ -134,7 +132,6 @@ void MemInfoDialog::on_pushButton_3_clicked(){
         file.resize(0); // 기존 내용 비우기
         QTextStream out(&file);
         doc.save(out, 4);
-        qDebug() << "사용자 활성화 상태 변경 완료!";
     }
 
     file.close();
