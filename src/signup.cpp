@@ -1,8 +1,8 @@
 #include "signup.h"
 #include "form/ui_signup.h"
 #include <QFile>
-#include <QDomDocument> // XML 읽기용
-#include <QXmlStreamWriter> // XML 쓰기용
+#include <QDomDocument>
+#include <QXmlStreamWriter>
 #include <QDomElement>
 #include <QDomNodeList>
 #include <QDatetime>
@@ -12,20 +12,19 @@
 
 Signup::Signup(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Signup) // UI 객체 동적 할당
+    ui(new Ui::Signup)
 {
-    ui->setupUi(this); // 디자인(.ui) 파일의 내용을 이 클래스에 입힘
+    ui->setupUi(this);
 }
 
-// 소멸자: 객체가 없어질 때 메모리를 해제함
 Signup::~Signup()
 {
-    delete ui; // 할당했던 UI 객체 삭제 (메모리 관리)
+    delete ui;
 }
 
 void Signup::on_buttonBox_accepted() {
     // 1. 버퍼에 일시 저장 (변수에 담기)
-    QString id = ui->lineEdit_2->text().trimmed(); // 앞뒤 공백 제거
+    QString id = ui->lineEdit_2->text().trimmed();
     QString pw1 = ui->lineEdit_3->text();
     QString pw2 = ui->lineEdit_4->text();
     int deposit = ui->spinBox->value();
@@ -125,7 +124,7 @@ void Signup::saveToXml(QString id, QString pw, int deposit) {
 
 // 중복 검사 로직 (기존과 동일)
 bool Signup::isIdDuplicated(QString id) {
-    QFile file("user_data.xml");
+    QFile file("../../data/user_data.xml");
     if (!file.exists() || !file.open(QIODevice::ReadOnly)) return false;
 
     QDomDocument doc;

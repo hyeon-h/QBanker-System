@@ -29,6 +29,12 @@ private slots:
 private:
     void closeEvent(QCloseEvent *event) override;
     Ui::SendDialog *ui;
+
+private:
+    QString senderName;
+
+public:
+    void setSenderInfo(QString name);
 };
 
-#endif // SENDDIALOG_H
+#endif

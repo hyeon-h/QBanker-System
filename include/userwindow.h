@@ -28,6 +28,13 @@ private:
     SendDialog* sendDialog;
     UserHistoryWindow* userHistoryWindow;
     Ui::UserWindow *ui;
+
+public:
+    void setUserInfo(QString name, QString balance);
+    void refreshUserInfo();
+
+protected:
+    void showEvent(QShowEvent *event) override;
 };
 
 #endif // UserWindow_H
