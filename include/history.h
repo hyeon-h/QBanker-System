@@ -19,18 +19,21 @@ struct History
 
 };
 
-struct SearchCriteria {
-    bool useDate;
-    QDate start;
-    QDate end;
+struct SearchCriteria { 
+    // 날짜 필터 관련
+    bool useDate;      // 날짜 필터 사용 여부 (체크박스 상태)
+    QDate start;       // 검색 시작 날짜
+    QDate end;         // 검색 종료 날짜
 
-    bool useAmount;
-    int minAmount;
-    int maxAmount;
+    // 금액 필터 관련
+    bool useAmount;    // 금액 필터 사용 여부
+    int minAmount;     // 최소 금액 범위
+    int maxAmount;     // 최대 금액 범위
 
-    bool useUser;
-    QString userName;
-    int typeIndex; // 0: 전체, 1: 송신, 2: 수신
+    // 사용자 및 유형 필터 관련
+    bool useUser;      // 특정 사용자 검색 여부 (필요시 사용)
+    QString userName;  // 검색할 사용자 이름
+    int typeIndex;     // 거래 유형 선택 (0: 전체, 1: 송신, 2: 수신)
 };
 
 #endif // HISTORY_H

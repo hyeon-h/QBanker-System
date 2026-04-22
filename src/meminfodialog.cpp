@@ -19,22 +19,23 @@ MemInfoDialog::~MemInfoDialog()
     delete ui;
 }
 
-void MemInfoDialog::loadUserData(){
+void MemInfoDialog::loadUserData() {
+    // 1. 유저 데이터 XML 파일 열기
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
 
+    // 2. XML 문서 구조화 (파싱)
     QDomDocument doc;
     if (!doc.setContent(&file)) {
         file.close();
         return;
     }
-    file.close();
+    file.close(); // 파싱이 끝났으므로 파일은 즉시 닫음
 
-
+    // 3. 테이블 초기화
     ui->tableWidget->setRowCount(0);
 
-
-
+    // 4. "User" 태그를 가진 모든 노드 추출
     QDomNodeList users = doc.elementsByTagName("User");
 
     for (int i = 0; i < users.count(); ++i) {
@@ -42,19 +43,21 @@ void MemInfoDialog::loadUserData(){
         if (userNode.isElement()) {
             QDomElement userElement = userNode.toElement();
 
-
+            // XML 엘리먼트에서 텍스트 데이터 추출
             QString id = userElement.firstChildElement("Name").text();
             QString balance = userElement.firstChildElement("Balance").text();
             QString date = userElement.firstChildElement("JoinDate").text();
             QString pw = userElement.firstChildElement("Password").text();
             QString active = userElement.firstChildElement("IsActive").text();
 
-
+            // 5. 테이블 행 추가 및 아이템 배치
             int row = ui->tableWidget->rowCount();
-            QTableWidgetItem *nameItem = new QTableWidgetItem(id);
-            nameItem->setCheckState(Qt::Unchecked); // 이 코드가 체크박스를 만듭니다.
-
             ui->tableWidget->insertRow(row);
+
+            // 첫 번째 열(이름)에 체크박스 기능 포함
+            QTableWidgetItem *nameItem = new QTableWidgetItem(id);
+            nameItem->setCheckState(Qt::Unchecked);
+
             ui->tableWidget->setItem(row, 0, nameItem);
             ui->tableWidget->setItem(row, 1, new QTableWidgetItem(balance));
             ui->tableWidget->setItem(row, 2, new QTableWidgetItem(date));
@@ -63,6 +66,7 @@ void MemInfoDialog::loadUserData(){
         }
     }
 
+    // 모든 열의 너비를 내용에 맞게 자동 조절
     ui->tableWidget->resizeColumnsToContents();
 }
 
