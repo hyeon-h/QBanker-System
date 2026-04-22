@@ -27,7 +27,7 @@ UserWindow::~UserWindow()
 
 void UserWindow::refreshUserInfo()
 {
-    QString currentName = ui->label_2->text(); // 현재 라벨에 적힌 내 이름
+    QString currentName = ui->label_2->text();
 
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
@@ -78,7 +78,7 @@ void UserWindow::on_pushButton_3_clicked()
 
     if (reply == QMessageBox::Yes)
     {
-        QString currentName = ui->label_2->text(); // 탈퇴할 놈 이름
+        QString currentName = ui->label_2->text();
 
         // 1. XML 파일 열기
         QFile file("../../data/user_data.xml");

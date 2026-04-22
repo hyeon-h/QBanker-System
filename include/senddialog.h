@@ -27,10 +27,10 @@ private:
     Ui::SendDialog *ui;
 
 private:
-    QString senderName; // 돈 보내는 사람 이름 저장
+    QString senderName;
 
 public:
-    void setSenderInfo(QString name); // 이름 받아오는 통로
+    void setSenderInfo(QString name);
 };
 
-#endif // SENDDIALOG_H
+#endif

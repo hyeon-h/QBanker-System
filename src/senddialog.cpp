@@ -18,12 +18,12 @@ SendDialog::~SendDialog()
     delete ui;
 }
 
-void SendDialog::on_pushButton_clicked() // 'Send' 버튼
+void SendDialog::on_pushButton_clicked()
 {
     // 1. 입력 데이터 가져오기
-    QString receiverName = ui->lineEdit->text().trimmed();     // 수신자 이름
-    int sendAmount = ui->lineEdit_2->text().toInt();          // 송금할 금액
-    // ui->lineEdit_3는 예약 날짜용이니 지금은 무시합니다.
+    QString receiverName = ui->lineEdit->text().trimmed();
+    int sendAmount = ui->lineEdit_2->text().toInt();
+
 
     // 2. 기초 유효성 검사 (label_5에 상태 표시)
     if (receiverName.isEmpty()) {
@@ -42,7 +42,7 @@ void SendDialog::on_pushButton_clicked() // 'Send' 버튼
     // 3. XML 파일 로드
     QFile file("../../data/user_data.xml");
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        ui->label_5->setText("DB 파일을 열 수 없습니다.");
+        ui->label_5->setText("XML 파일을 열 수 없습니다.");
         return;
     }
 
@@ -104,7 +104,7 @@ void SendDialog::on_pushButton_clicked() // 'Send' 버튼
     // 8. 결과 알림
     ui->label_5->setText(receiverName + "님께 " + QString::number(sendAmount) + "원 송금 완료!");
 
-    // 입력창 깔끔하게 비우기 (예약 날짜 제외)
+
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
 }

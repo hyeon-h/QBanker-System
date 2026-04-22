@@ -3,14 +3,7 @@
         <Name>메시</Name>
         <JoinDate>2026-04-20 18:58:23</JoinDate>
         <Password>호날두</Password>
-        <Balance>10000200</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-21 09:45:49</JoinDate>
-        <Password>1234</Password>
-        <Balance>30000</Balance>
+        <Balance>10000700</Balance>
         <IsActive>true</IsActive>
     </User>
     <User>
@@ -31,6 +24,48 @@
         <Name>hyeon</Name>
         <JoinDate>2026-04-21 11:46:24</JoinDate>
         <Password>111</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 09:34:05</JoinDate>
+        <Password>1234</Password>
+        <Balance>300</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 09:34:15</JoinDate>
+        <Password>1234</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 09:34:16</JoinDate>
+        <Password>1234</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 09:34:26</JoinDate>
+        <Password>1234</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>손흥민</Name>
+        <JoinDate>2026-04-22 09:43:40</JoinDate>
+        <Password>1234</Password>
+        <Balance>0</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>123</Name>
+        <JoinDate>2026-04-22 10:12:12</JoinDate>
+        <Password>123</Password>
         <Balance>0</Balance>
         <IsActive>true</IsActive>
     </User>
