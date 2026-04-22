@@ -71,7 +71,12 @@ void AdminHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
 
         // 2. 금액 필터
         if(sc.useAmount) {
+            // 범위 체크
             if(h.amount < sc.minAmount || h.amount > sc.maxAmount) continue;
+
+            // [수정] 금액 검색 시에는 가입(CreateAccount)이나 탈퇴(Delete) 내역은 제외하고
+            // 실질적인 송금(Transfer) 내역만 보여주도록 제한합니다.
+            if(h.action != ActionType::Transfer) continue;
         }
 
         // 3. 타입 필터 (0:전체, 1:입출금, 2:기타)
@@ -80,13 +85,12 @@ void AdminHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
             if (h.action != ActionType::Transfer) continue;
         }
         else if (sc.typeIndex == 2) {
-            // 기타: 계좌 생성(CreateAccount) 및 삭제(Delete)만 통과
+            // 기타: 계좌 생성 및 삭제 내역만 통과
             if (h.action == ActionType::Transfer) continue;
         }
 
-        // 4. 사용자 필터 (체크박스 체크 시에만 작동)
+        // 4. 사용자 필터
         if (sc.useUser) {
-            // 보낸 사람이나 받은 사람 중 검색어가 포함되어 있어야 함
             if (h.from != sc.userName && h.to != sc.userName) continue;
         }
 

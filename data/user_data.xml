@@ -10,7 +10,21 @@
         <Name>황현</Name>
         <JoinDate>2026-04-22 14:14:39</JoinDate>
         <Password>123</Password>
-        <Balance>100000</Balance>
+        <Balance>80000</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>박지성</Name>
+        <JoinDate>2026-04-22 16:13:41</JoinDate>
+        <Password>123</Password>
+        <Balance>20000</Balance>
+        <IsActive>true</IsActive>
+    </User>
+    <User>
+        <Name>정찬범</Name>
+        <JoinDate>2026-04-22 16:14:00</JoinDate>
+        <Password>123</Password>
+        <Balance>200000</Balance>
         <IsActive>true</IsActive>
     </User>
 </Users>

@@ -131,4 +131,3 @@ QString UserHistoryWindow::getUserMessage(const History& h) {
         return QString("[%1]님으로부터 %2원 입금 완료").arg(h.from).arg(h.amount);
     }
 }
-

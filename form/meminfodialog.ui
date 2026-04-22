@@ -171,45 +171,71 @@ QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
    </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="leftMargin"><number>24</number></property>
-   <property name="topMargin"><number>24</number></property>
-   <property name="rightMargin"><number>24</number></property>
-   <property name="bottomMargin"><number>24</number></property>
-   <property name="spacing"><number>14</number></property>
+   <property name="spacing">
+    <number>14</number>
+   </property>
+   <property name="leftMargin">
+    <number>24</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>24</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
    <item>
     <widget class="QWidget" name="card" native="true">
      <layout class="QVBoxLayout" name="cardLayout">
-      <property name="leftMargin"><number>24</number></property>
-      <property name="topMargin"><number>22</number></property>
-      <property name="rightMargin"><number>24</number></property>
-      <property name="bottomMargin"><number>22</number></property>
-      <property name="spacing"><number>14</number></property>
+      <property name="spacing">
+       <number>14</number>
+      </property>
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="topMargin">
+       <number>22</number>
+      </property>
+      <property name="rightMargin">
+       <number>24</number>
+      </property>
+      <property name="bottomMargin">
+       <number>22</number>
+      </property>
       <item>
        <layout class="QGridLayout" name="gridLayout">
-        <property name="horizontalSpacing"><number>10</number></property>
-        <property name="verticalSpacing"><number>14</number></property>
+        <property name="horizontalSpacing">
+         <number>10</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>14</number>
+        </property>
         <item row="0" column="0" colspan="2">
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <family>Segoe UI</family>
+            <pointsize>-1</pointsize>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">
            <string>가입자 정보</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="1" column="0" colspan="2">
          <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>⚠  활동 정지 / 정지 해제</string>
-          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>⚠  활동 정지 / 정지 해제</string>
           </property>
          </widget>
         </item>
@@ -226,7 +252,7 @@ QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
           </property>
           <column>
            <property name="text">
-            <string>가입자</string>
+            <string>가입자(ID)</string>
            </property>
            <property name="font">
             <font>
@@ -267,36 +293,47 @@ QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
            <enum>Qt::Orientation::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
-           <size><width>40</width><height>20</height></size>
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
           </property>
          </spacer>
         </item>
         <item row="3" column="1">
          <layout class="QHBoxLayout" name="buttonLayout">
-          <property name="spacing"><number>10</number></property>
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QPushButton" name="pushButton">
             <property name="minimumSize">
-             <size><width>120</width><height>0</height></size>
-            </property>
-            <property name="text">
-             <string>확인</string>
+             <size>
+              <width>120</width>
+              <height>42</height>
+             </size>
             </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>확인</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_2">
             <property name="minimumSize">
-             <size><width>120</width><height>0</height></size>
-            </property>
-            <property name="text">
-             <string>취소</string>
+             <size>
+              <width>120</width>
+              <height>44</height>
+             </size>
             </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>취소</string>
             </property>
            </widget>
           </item>
