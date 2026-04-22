@@ -70,21 +70,16 @@ void MainWindow::on_pushButton_2_clicked() {
         QString xmlPw = userElement.firstChildElement("Password").text();
         QString xmlActiveStr = userElement.firstChildElement("IsActive").text();
 
-<<<<<<< HEAD
-        if (xmlId == inputId && xmlPw == inputPw) {
-            loginSuccess = true;
-            DataManager::instance().loginId = inputId;
-            DataManager::instance().loadJson();
-=======
         if (xmlId == inputId && xmlPw == inputPw ) {
             if(xmlActiveStr == "true"){
                 QString xmlBalance = userElement.firstChildElement("Balance").text();
+                DataManager::instance().loginId = inputId;
+                DataManager::instance().loadJson();
                 userWin = new UserWindow(this);
                 userWin->setUserInfo(xmlId, xmlBalance);
                 userWin->show();
                 this->hide();
                 loginSuccess = true;
->>>>>>> feat/user
             break;
             }
             else {
@@ -94,19 +89,8 @@ void MainWindow::on_pushButton_2_clicked() {
         }
     }
 
-<<<<<<< HEAD
-    if (loginSuccess) {
-        userWin = new UserWindow(this);
-        ui->lineEdit_3->setText(inputId + "님, 로그인 성공!");
-        userWin->show();
-        this->hide();
-    } else {
-        ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
-=======
     if (loginSuccess==false)
     {
-
          ui->lineEdit_3->setText("아이디 또는 비밀번호가 틀렸습니다.");
->>>>>>> feat/user
     }
 }

@@ -3,14 +3,11 @@
 #include "senddialog.h"
 #include "userhistorywindow.h"
 #include <QMessageBox>
-<<<<<<< HEAD
 #include "history.h"
 #include "datamanager.h"
-=======
 #include <QFile>
 #include <QDomDocument>
 #include <QTextStream>
->>>>>>> feat/user
 
 UserWindow::UserWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -83,7 +80,6 @@ void UserWindow::on_pushButton_3_clicked()
 
     if (reply == QMessageBox::Yes)
     {
-<<<<<<< HEAD
         History h;
         h.dateTime = QDateTime::currentDateTime();
         h.from = DataManager::instance().loginId;
@@ -92,9 +88,6 @@ void UserWindow::on_pushButton_3_clicked()
         h.amount = 0;
 
         DataManager::instance().addHistory(h);
-
-        this->close();
-=======
         QString currentName = ui->label_2->text();
 
         // 1. XML 파일 열기
@@ -143,7 +136,6 @@ void UserWindow::on_pushButton_3_clicked()
             file.close();
             QMessageBox::warning(this, "오류", "사용자 정보를 찾을 수 없습니다.");
         }
->>>>>>> feat/user
     }
 }
 

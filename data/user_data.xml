@@ -28,7 +28,6 @@
         <IsActive>true</IsActive>
     </User>
     <User>
-<<<<<<< HEAD
         <Name>황현님</Name>
         <JoinDate>2026-04-22 08:35:12</JoinDate>
         <Password>123</Password>
@@ -36,58 +35,10 @@
         <IsActive>true</IsActive>
     </User>
     <User>
-        <Name>황현</Name>
-        <JoinDate>2026-04-22 08:49:12</JoinDate>
-        <Password>123</Password>
-        <Balance>15000</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
         <Name>김현</Name>
         <JoinDate>2026-04-22 08:58:44</JoinDate>
         <Password>1234</Password>
         <Balance>50000</Balance>
-=======
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-22 09:34:05</JoinDate>
-        <Password>1234</Password>
-        <Balance>300</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-22 09:34:15</JoinDate>
-        <Password>1234</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-22 09:34:16</JoinDate>
-        <Password>1234</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-22 09:34:26</JoinDate>
-        <Password>1234</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>손흥민</Name>
-        <JoinDate>2026-04-22 09:43:40</JoinDate>
-        <Password>1234</Password>
-        <Balance>0</Balance>
-        <IsActive>true</IsActive>
-    </User>
-    <User>
-        <Name>123</Name>
-        <JoinDate>2026-04-22 10:12:12</JoinDate>
-        <Password>123</Password>
-        <Balance>0</Balance>
->>>>>>> feat/user
         <IsActive>true</IsActive>
     </User>
 </Users>

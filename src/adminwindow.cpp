@@ -9,8 +9,6 @@ AdminWindow::AdminWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("AdminLogin");
-<<<<<<< HEAD
-=======
 
 
     QFile file("../../data/user_data.xml");
@@ -33,7 +31,6 @@ AdminWindow::AdminWindow(QWidget *parent)
 
     adminHistoryWindow = new AdminHistoryWindow(this);
     memInfoDialog = new MemInfoDialog(this);
->>>>>>> feat/user
 }
 
 AdminWindow::~AdminWindow()
@@ -44,14 +41,9 @@ AdminWindow::~AdminWindow()
 void AdminWindow::on_pushButton_clicked()
 {
     qDebug()<<"가입자 조회";
-<<<<<<< HEAD
     memInfoDialog = new MemInfoDialog(this);
     memInfoDialog->setAttribute(Qt::WA_DeleteOnClose);
-    memInfoDialog->show();
-=======
     memInfoDialog->exec();
-    //this->hide();
->>>>>>> feat/user
 }
 
 void AdminWindow::on_pushButton_2_clicked()
@@ -60,8 +52,5 @@ void AdminWindow::on_pushButton_2_clicked()
     adminHistoryWindow = new AdminHistoryWindow(this);
     adminHistoryWindow->setAttribute(Qt::WA_DeleteOnClose);
     adminHistoryWindow->show();
-<<<<<<< HEAD
-=======
     //this->hide();
->>>>>>> feat/user
 }
