@@ -70,7 +70,7 @@ void UserHistoryWindow::on_pushButton_3_clicked() {
 }
 
 void UserHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
-    // 기존 테이블 내역 초기화 (새로운 검색 결과를 위해)
+    // 기존 테이블 내역 초기화
     ui->tableWidget->setRowCount(0);
 
     // 데이터 원본 및 로그인 정보 가져오기
@@ -78,13 +78,16 @@ void UserHistoryWindow::filterAndDisplay(const SearchCriteria& sc) {
     QString loginId = DataManager::instance().loginId;
 
     for(const History& h : std::as_const(allHists)) {
-        // [보안 필터] 본인이 보낸 것도 아니고, 받은 것도 아니면 남의 내역이므로 즉시 제외
+        // 가입/탈퇴 기록은 유저 창에서 제외합니다.
+        if(h.action != ActionType::Transfer) continue;
+
+        // [보안 필터] 본인과 관련 없는(남의) 내역은 거릅니다.
         if(h.from != loginId && h.to != loginId) continue;
 
-        // [송수신 종류 필터] 콤보박스 선택값에 따른 분기 처리
-        if(sc.typeIndex == 1) { // '송금'만 보기: 발신자가 본인이 아닌 경우 제외
+        // [송수신 종류 필터] 콤보박스 선택값에 따른 분기
+        if(sc.typeIndex == 1) { // '송금'만 보기 (내가 보낸 것)
             if(h.from != loginId) continue;
-        } else if(sc.typeIndex == 2) { // '입금'만 보기: 수신자가 본인이 아닌 경우 제외
+        } else if(sc.typeIndex == 2) { // '입금'만 보기 (내가 받은 것)
             if(h.to != loginId) continue;
         }
 
@@ -121,18 +124,12 @@ void UserHistoryWindow::addTableRow(const History& h) { //필터링된 History �
 QString UserHistoryWindow::getUserMessage(const History& h) {
     QString loginId = DataManager::instance().loginId;
 
-    if (h.action == ActionType::Transfer) {
-        if (h.from == loginId) {
-            // 내가 보낸 경우 (송금)
-            return QString("[%1]님께 %2원 송금 완료").arg(h.to).arg(h.amount);
-        } else {
-            // 내가 받은 경우 (입금)
-            return QString("[%1]님으로부터 %2원 입금 완료").arg(h.from).arg(h.amount);
-        }
-    } else if (h.action == ActionType::CreateAccount) {
-        return "계좌 생성 및 초기 입금 축하드립니다.";
+    if (h.from == loginId) {
+        // 내가 보낸 경우 (송금)
+        return QString("[%1]님께 %2원 송금 완료").arg(h.to).arg(h.amount);
+    } else {
+        // 내가 받은 경우 (입금)
+        return QString("[%1]님으로부터 %2원 입금 완료").arg(h.from).arg(h.amount);
     }
-    return "기타";
 }
-
 
