@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include "history.h"
 
 namespace Ui {
 class AdminHistoryWindow;
@@ -28,6 +29,9 @@ protected:
 
 private:
     Ui::AdminHistoryWindow *ui;
+    QString getHistoryMessage(const History& h);
+    void filterAndDisplay(const SearchCriteria& sc);
+    void addTableRow(const History& h);
 };
 
 #endif // ADMINHISTORYWINDOW_H

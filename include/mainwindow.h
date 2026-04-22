@@ -1,11 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "signup.h"
-
-
+#include "datamanager.h"
+#include "history.h"
 #include <QMainWindow>
 #include "userwindow.h"
 #include "adminwindow.h"
+#include <QStandardPaths>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,7 +18,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private slots:
     // UI에서 "Go to slot"으로 만든 함수들이 여기에 선언됩니다.
     void on_pushButton_clicked();   // 신규 가입 버튼

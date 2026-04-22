@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include "history.h"
 
 namespace Ui {
 class UserHistoryWindow;
@@ -27,6 +28,9 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 private:
     Ui::UserHistoryWindow *ui;
+    void filterAndDisplay(const SearchCriteria& sc);
+    void addTableRow(const History& h);
+    QString getUserMessage(const History& h);
 };
 
 #endif // USERHISTORYWINDOW_H
